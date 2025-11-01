@@ -1,2 +1,1477 @@
+
 \section{ENGINEERING REQUIREMENTS}
 
+% Temporary: page break before each module subsection for readability
+% Comment out or remove these two lines when no longer needed.
+\let\origsubsection\subsection
+\renewcommand{\subsection}{\newpage\origsubsection}
+
+% System
+    % Processing Core
+        % Planner
+            % Waypoint Planner
+            % RC Mixer
+            % State Select
+        % Controller
+            % Preprocessor
+            % PVA Controller
+            % ATL Controller
+            % Control Distributor
+        % Navigation
+            % Sensor Selector
+            % Estimator
+        % Logger
+            % Storage
+            % Transmitt
+    % Processing Architecture
+        % RTOS
+        % HAL
+    % Hardware Platform
+        % Microprocessor
+        % Hardware I/O ports
+        % Power Supply
+    % Configuration Tool
+
+
+% Begin System Requirements
+\subsection{System Requirements}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Operation
+    }
+
+    % Begin Functional Requirements
+    \subsubsection{Functional Requirements}
+
+        \begin{enumerate}[(a)]
+            \item Requirement 1
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item Processing Core
+            \item Processing Architecture
+            \item Hardware Platform
+            \item Configuration Tool
+        \end{enumerate}
+    %%% End Functional Requirements
+
+
+    % Begin Interfaces
+    \subsubsection{Interfaces}
+
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Input 1
+        \end{enumerate}
+
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Output 1
+        \end{enumerate}
+    %%% End Interfaces
+
+
+    % Begin Non-Functional Requirements
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Energy Requirement 1
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Environment Requirement 1
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Safety Requirement 1
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Structure Requirement 1
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Standards and Regulations Requirement 1
+        \end{enumerate}
+    
+    %%% End Non-Functional Requirements
+%%% End System Requirements
+
+% Begin Processing Core
+\subsection{Processing Core}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose of the Processing Core: provide the main computation and coordination services for planning, control, navigation, and logging.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Operation of the Processing Core: receives sensor inputs, runs planning and control algorithms, and issues actuator commands and logs.
+    }
+
+    % Begin Functional Requirements
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item The Processing Core shall host the Planner, Controller, Navigation, and Logger submodules and provide inter-module communication.
+            \item The Processing Core shall provide scheduling and communication primitives used by its submodules.
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item Planner
+            \item Controller
+            \item Navigation
+            \item Logger
+        \end{enumerate}
+    %%% End Functional Requirements
+
+    % Begin Interfaces
+    \subsubsection{Interfaces}
+
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Sensor data and configuration parameters
+        \end{enumerate}
+
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Actuator commands, telemetry, and stored logs
+        \end{enumerate}
+    % End Interfaces
+
+    % Begin Non-Functional Requirements
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item The Processing Core shall operate within the power budget allocated for the onboard processor.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item The Processing Core shall tolerate expected operating temperatures and vibration levels.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item The Processing Core shall not issue unsafe actuator commands under fault conditions.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item The Processing Core shall expose well-defined APIs for its submodules.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item The Processing Core shall follow applicable coding and safety guidelines.
+        \end{enumerate}
+    %%% End Non-Functional Requirements
+%%% End Processing Core
+
+% Begin Planner
+\subsection{Planner}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose of the Processing Core: provide the main computation and coordination services for planning, control, navigation, and logging.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Operation of the Processing Core: receives sensor inputs, runs planning and control algorithms, and issues actuator commands and logs.
+    }
+
+    % Begin Functional Requirements
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Make da plans
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item Waypoint Planner
+            \item RC Mixer
+            \item State Select
+        \end{enumerate}
+    %%% End Functional Requirements
+
+    % Begin Interfaces
+    \subsubsection{Interfaces}
+
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Waypoints and configuration parameters
+        \end{enumerate}
+
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Planned waypoints
+        \end{enumerate}
+    % End Interfaces
+
+    % Begin Non-Functional Requirements
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item The Planner shall operate within the power budget allocated for the onboard processor.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item The Planner shall tolerate expected operating temperatures and vibration levels.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item The Planner shall not issue unsafe actuator commands under fault conditions.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item The Planner shall expose well-defined APIs for its submodules.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item The Planner shall follow applicable coding and safety guidelines.
+        \end{enumerate}
+    %%% End Non-Functional Requirements
+%%% End Planner
+
+\newpage
+% Begin Waypoint Planner
+\subsection{Waypoint Planner}
+
+    \subsubsection{Purpose}
+    \subsubitem{Convert high-level paths into waypoint lists suitable for controllers.}
+
+    \subsubsection{Operation}
+    \subsubitem{Consume planned paths and output discrete waypoints with timing and tolerances.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Produce waypoint lists with time or speed annotations.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Planned path segments
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Discrete waypoint messages
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Operate within allocated compute and power budgets for planning tasks.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain deterministic behavior across expected operating temperatures and vibration.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Generate waypoint sets that do not violate safety constraints or no-go zones.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Expose versioned interfaces for waypoint messages and configuration.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Adhere to applicable data and coding standards for planning algorithms.
+        \end{enumerate}
+%%% End Waypoint Planner
+
+\newpage
+% Begin RC Mixer
+\subsection{RC Mixer}
+
+    \subsubsection{Purpose}
+    \subsubitem{Merge pilot inputs with autonomous commands where applicable.}
+
+    \subsubsection{Operation}
+    \subsubitem{Accept RC inputs and planned commands, output blended commands respecting control logic.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Support priority rules between pilot and autonomous commands.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item RC stick commands, autonomous command stream
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Mixed command stream to controllers
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Operate within the control loop power and CPU budgets.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain performance under expected EMI and temperature ranges.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Enforce priority and safety interlocks to prevent unsafe command blending.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide traceable mapping between RC inputs and mixed outputs.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable safety and control interface standards.
+        \end{enumerate}
+%%% End RC Mixer
+
+\newpage
+% Begin State Select
+\subsection{State Select}
+
+    \subsubsection{Purpose}
+    \subsubitem{Choose higher-level operating states (e.g., manual, assisted, autonomous).}
+
+    \subsubsection{Operation}
+    \subsubitem{Monitor inputs and select current operational mode, publishing mode state to other modules.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide deterministic state transitions with guards and safety checks.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Pilot commands, system health, mission status
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Current operating state
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Minimal additional power and CPU overhead per transition decision.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Robust to sensor dropouts and environmental disturbances.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Provide auditable and recoverable transitions with fail-safe defaults.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Documented state machine with clear guards and actions.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Conform to applicable safety/state-machine design practices.
+        \end{enumerate}
+%%% End State Select
+
+\newpage
+% Begin Controller
+\subsection{Controller}
+
+    \subsubsection{Purpose}
+    \subsubitem{Compute actuator setpoints from planned trajectories and state estimates.}
+
+    \subsubsection{Operation}
+    \subsubitem{Run control loops (e.g., PVA, ATL) and distribute control outputs to actuators.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Implement required control algorithms and scheduling.
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item Preprocessor
+            \item PVA Controller
+            \item ATL Controller
+            \item Control Distributor
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Waypoints, state estimates, preprocessor outputs
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Actuator commands
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Execute within the control loop CPU and power budgets.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain stability across environmental conditions and sensor noise.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Ensure bounded outputs and safe behavior under saturation and faults.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Modular controller design with clear scheduling and interfaces.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable control and software standards.
+        \end{enumerate}
+%%% End Controller
+
+\newpage
+% Begin Preprocessor
+\subsection{Preprocessor}
+
+    \subsubsection{Purpose}
+    \subsubitem{Prepare inputs for control loops (filtering, safety checks).}
+
+    \subsubsection{Operation}
+    \subsubitem{Filter and condition raw inputs before they are used by the controller.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide filtered and validated sensor data to controllers.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Raw sensor measurements
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Filtered sensor streams
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Processing overhead shall fit within the loop budget.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Filters shall maintain performance under expected sensor disturbances.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Filtering shall never mask critical fault indicators.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Configurable filter parameters with documented effects.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable signal-processing guidelines.
+        \end{enumerate}
+%%% End Preprocessor
+
+\newpage
+% Begin PVA Controller
+\subsection{PVA Controller}
+
+    \subsubsection{Purpose}
+    \subsubitem{Position/velocity/acceleration controller for trajectory following.}
+
+    \subsubsection{Operation}
+    \subsubitem{Compute setpoints to track waypoints and trajectories.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Maintain tracking error within specified bounds.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Waypoints and state estimates
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Actuator-level setpoints
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Execute within allocated CPU/power for PVA computations.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain stability across expected disturbances and noise.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Ensure bounded errors and safe fallback when estimates are invalid.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Parameterized gains with traceable tuning records.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable control-system standards.
+        \end{enumerate}
+%%% End PVA Controller
+
+\newpage
+% Begin ATL Controller
+\subsection{ATL Controller}
+
+    \subsubsection{Purpose}
+    \subsubitem{Axis/attitude/torque-level controller.}
+
+    \subsubsection{Operation}
+    \subsubitem{Translate higher-level commands to low-level actuator demands.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide actuator commands that respect actuator limits.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Desired attitude and torque references
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Low-level actuator commands
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Operate within low-level loop budgets.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain performance across expected thermal and EMI conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Enforce actuator limits and safe modes under faults.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Clear interfaces to actuator drivers and health monitors.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Adhere to applicable safety and hardware interfacing standards.
+        \end{enumerate}
+%%% End ATL Controller
+
+\newpage
+% Begin Control Distributor
+\subsection{Control Distributor}
+
+    \subsubsection{Purpose}
+    \subsubitem{Route control outputs to the correct actuator channels.}
+
+    \subsubsection{Operation}
+    \subsubitem{Distribute controller outputs to physical I/O interfaces.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Map logical control channels to hardware outputs.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Controller output commands
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Hardware actuator signals
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Minimal overhead in routing commands to outputs.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain timing integrity under expected conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Prevent misrouting; provide diagnostics and traceability.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Configurable mapping from control channels to hardware outputs.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable avionics/robotics interfacing standards where relevant.
+        \end{enumerate}
+%%% End Control Distributor
+
+\newpage
+% Begin Navigation
+\subsection{Navigation}
+
+    \subsubsection{Purpose}
+    \subsubitem{Provide accurate state estimation and sensor selection to support planning and control.}
+
+    \subsubsection{Operation}
+    \subsubitem{Run estimators, select appropriate sensors, and publish state estimates.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide timely, bounded-uncertainty state estimates.
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)] 
+            \item Sensor Selector
+            \item Estimator
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Raw sensor data and configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item State estimate messages
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Complete estimation within allocated compute budget.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain accuracy across sensor noise and environmental changes.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Provide validity flags and fail-safe estimates upon degraded inputs.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide uncertainty metrics and timestamps with each estimate.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable estimation and data handling standards.
+        \end{enumerate}
+%%% End Navigation
+
+\newpage
+% Begin Sensor Selector
+\subsection{Sensor Selector}
+
+    \subsubsection{Purpose}
+    \subsubitem{Choose the best sensor inputs for the current conditions.}
+
+    \subsubsection{Operation}
+    \subsubitem{Evaluate sensor health and availability, output selected sensor streams.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide prioritized sensor streams and fallback choices.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item All available sensor feeds and health indicators
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Selected sensor feeds for estimator
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Selection logic shall be lightweight and efficient.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Robust to sensor dropouts and environmental disturbances.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Ensure safe fallbacks when preferred sensors are unavailable.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Clearly defined selection criteria and priorities.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable data quality and redundancy practices.
+        \end{enumerate}
+%%% End Sensor Selector
+
+\newpage
+% Begin Estimator
+\subsection{Estimator}
+
+    \subsubsection{Purpose}
+    \subsubitem{Fuse selected sensor inputs into a state estimate.}
+
+    \subsubsection{Operation}
+    \subsubitem{Run sensor fusion algorithms and output best-guess system state.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide pose, velocity and other required state variables with uncertainty metrics.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Selected sensor streams and configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item State estimates with timestamps
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Execute within compute and power budgets for estimation.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain estimation quality across expected operating conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Provide safe outputs when inputs are inconsistent or stale.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide consistent time alignment and data schemas.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Comply with relevant estimation and logging standards.
+        \end{enumerate}
+%%% End Estimator
+
+% Begin Logger
+\subsection{Logger}
+
+    \subsubsection{Purpose}
+    \subsubitem{Record mission data and provide mechanisms for transmission or storage.}
+
+    \subsubsection{Operation}
+    \subsubitem{Collect telemetry, write to storage, and/or send data via communications links.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Preserve critical telemetry and provide retrieval interfaces.
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item Storage
+            \item Transmitt
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Telemetry streams from other modules
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Stored logs and outgoing telemetry
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Logging shall not exceed allocated power/CPU budgets.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain logging integrity across operating conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Logging should not interfere with real-time control operations.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide schemas and retention policies for stored data.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable data retention and privacy regulations.
+        \end{enumerate}
+%%% End Logger
+
+\newpage
+% Begin Storage
+\subsection{Storage}
+
+    \subsubsection{Purpose}
+    \subsubitem{Persist logs for later retrieval.}
+
+    \subsubsection{Operation}
+    \subsubitem{Write telemetry to onboard non-volatile memory with indexing.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Support retrieval by timestamp and event markers.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Telemetry streams to be persisted, storage configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Stored log files or records retrievable by time/index
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Operate within storage device power and bandwidth limits.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Ensure data integrity across temperature/vibration ranges.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Protect critical logs and prevent data loss on faults.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide indexing and retrieval mechanisms (by time/index).
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow data integrity and storage standards.
+        \end{enumerate}
+%%% End Storage
+
+\newpage
+% Begin Transmitt
+\subsection{Transmitt}
+
+    \subsubsection{Purpose}
+    \subsubitem{Transmit selected telemetry offboard.}
+
+    \subsubsection{Operation}
+    \subsubitem{Send compressed telemetry or health messages through the communications stack.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide telemetry prioritization and retransmission.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Selected telemetry streams and transmission policy
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Telemetry packets transmitted via communications link
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Respect power constraints for the communications subsystem.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain link robustness across expected RF/EMI conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Prioritize safety/health telemetry under degraded links.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide message schemas and prioritization policies.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow spectrum usage and data regulations.
+        \end{enumerate}
+%%% End Transmitt
+
+    % Begin Processing Architecture
+\subsection{Processing Architecture}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: define OS and HAL abstractions to support real-time processing.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Provides scheduling, task isolation, and hardware abstraction layers.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Support RTOS features and a hardware abstraction layer for portable drivers.
+        \end{enumerate}
+
+        \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item RTOS
+            \item HAL
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Driver requests and configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Timing and scheduling primitives to tasks
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Support power-aware scheduling and low-power modes in RTOS and drivers where applicable.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain timing determinism and reliability across expected thermal, vibration, and EMI environments.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Provide task isolation, memory protection, and watchdog integration for safety-critical functions.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Expose stable, versioned APIs for scheduling and hardware abstraction with clear dependency boundaries.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Conform to relevant real-time and coding standards (e.g., MISRA/CERT where applicable) and any platform certification requirements.
+        \end{enumerate}
+
+\newpage
+\subsection{RTOS}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: real-time operating system services.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Task scheduling, priority inversion handling, timing services.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide deterministic scheduling for control tasks.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Task creation requests, timing constraints, and system configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Scheduling decisions, timers, and inter-task signaling primitives
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Provide power-aware scheduling where applicable.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain timing guarantees under expected operating conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Support priority inversion mitigation and safety-critical task isolation.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide documented APIs for tasks, timers, and synchronization.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Conform to relevant RTOS certification or best-practice standards.
+        \end{enumerate}
+
+\newpage
+\subsection{HAL}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: hardware abstraction for portable drivers.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Provide uniform APIs for peripherals and I/O across platforms.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Expose safe, well-documented interfaces for hardware access.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Driver requests from higher layers, hardware configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Standardized peripheral access APIs and events
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Support low-power modes and efficient peripheral usage.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Operate reliably across expected electrical and thermal conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Ensure safe access to hardware, enforcing limits and protections.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Maintain stable, versioned APIs across platforms.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Comply with applicable hardware interface standards.
+        \end{enumerate}
+
+%%% End Processing Architecture
+
+% Hardware Platform
+\subsection{Hardware Platform}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: physical computing and power platform that hosts the processing and I/O.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Hosts the microprocessor, I/O ports, and provides power to subsystems.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Meet mechanical, thermal, and electrical constraints for deployment.
+        \end{enumerate}
+
+    \paragraph{Submodules}
+        \begin{enumerate}[(a)]
+            \item Microprocessor
+            \item Hardware I/O ports
+            \item Power Supply
+        \end{enumerate}
+
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Power and environmental inputs
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Power rails and I/O signals
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Meet system power budgets with efficient conversion and distribution; support low-power modes where required.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Operate within specified temperature, shock, and vibration profiles; provide EMI/ESD robustness.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Include electrical protections (fusing, OVP/UVP/OCP) and safe power-down behavior; isolate fault domains.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide mechanical mounting, connectorization, and labeling suitable for serviceability; document interfaces and constraints.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Comply with applicable electrical safety and EMC standards for the deployment environment.
+        \end{enumerate}
+%%% End Hardware Platform
+
+\newpage
+% Begin Microprocessor
+\subsection{Microprocessor}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: execute software for all processing tasks.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Run RTOS and application software within the hardware constraints.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide sufficient CPU, memory, and peripherals to host the software stack.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Power and clock inputs, boot configuration
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Processing capability exposed via buses and I/O interfaces
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Meet power consumption targets including low-power modes.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Operate within specified temperature and vibration ratings.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Support watchdogs and fault detection mechanisms.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide documentation for cores, memory maps, and peripherals.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Comply with relevant processor and EMC standards.
+        \end{enumerate}
+%%% End Microprocessor
+
+\newpage
+% Begin Hardware I/O ports
+\subsection{Hardware I/O ports}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: expose physical interfaces to sensors and actuators.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Provide GPIO, serial, analog, and bus interfaces for peripherals.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Meet signaling and timing requirements of connected devices.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Sensor and actuator connections, configuration inputs
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Electrical signals to external devices (GPIO, serial, analog, buses)
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Respect current and power limits for all ports.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Meet environmental tolerances and EMI/ESD protections.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Provide protections against shorts and over-voltage conditions.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Clearly document pinouts and electrical characteristics.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Comply with relevant electrical and interface standards.
+        \end{enumerate}
+%%% End Hardware I/O ports
+
+
+\newpage
+% Power Supply
+\subsection{Power Supply}
+
+    \subsubsection{Purpose}
+    \subsubitem{
+        Purpose: supply stable, filtered power to the system.
+    }
+
+    \subsubsection{Operation}
+    \subsubitem{
+        Regulate and distribute power, monitor health, and provide protections.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide required voltages and current with redundancy as specified.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Input power source(s), control signals for power management
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Regulated power rails and status/health signals
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Efficiency shall meet specified targets across load ranges.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Operate across specified thermal and vibration conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Include protections (OVP, UVP, OCP) and safe shutdown behavior.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide diagnostic and status reporting for power rails.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Comply with relevant electrical safety and EMC standards.
+        \end{enumerate}
+%%% End Power Supply
+
+\newpage
+% Configuration Tool
+
+\subsection{Configuration Tool}
+
+    \subsubsection{Purpose}
+    Purpose: provide an interface for configuring system parameters and mission plans.
+
+    \subsubsection{Operation}
+    Run on a host or ground-station, produce configuration files or commands for the system.
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Allow editing and validation of configuration parameters and mission plans.
+        \end{enumerate}
+
+    \subsubsection{Interfaces}
+        \paragraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item User inputs and configuration files
+        \end{enumerate}
+        \paragraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Validated configuration data for the system
+        \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \paragraph{Energy}
+        \begin{enumerate}[(a)]
+            \item Operate efficiently on supported host systems, with modest CPU/memory usage during typical editing and validation.
+        \end{enumerate}
+
+        \paragraph{Environments}
+        \begin{enumerate}[(a)]
+            \item Support specified OS/platform versions; operate reliably offline and under intermittent filesystem or network conditions.
+        \end{enumerate}
+
+        \paragraph{Safety}
+        \begin{enumerate}[(a)]
+            \item Prevent creation of unsafe configurations via validation, schemas, and guardrails; provide role-appropriate access controls if applicable.
+        \end{enumerate}
+
+        \paragraph{Structure}
+        \begin{enumerate}[(a)]
+            \item Version configuration schemas; support migration tooling, backups, and audit/change tracking.
+        \end{enumerate}
+
+        \paragraph{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Adhere to relevant data handling/privacy policies and file format standards required by the system.
+        \end{enumerate}
