@@ -1,4 +1,4 @@
-
+% !TeX root = SpecTemplate.tex
 \section{ENGINEERING REQUIREMENTS}
 
 % Temporary: page break before each module subsection for readability
@@ -185,14 +185,11 @@
 % Begin Planner
 \subsection{Planner}
 
-    \subsubsection{Purpose}
-    \subsubitem{
-        Purpose of the Processing Core: provide the main computation and coordination services for planning, control, navigation, and logging.
-    }
-
-    \subsubsection{Operation}
-    \subsubitem{
-        Operation of the Processing Core: receives sensor inputs, runs planning and control algorithms, and issues actuator commands and logs.
+    \subitem{
+        The purpose of the Planner is to generate a series of realizable states for the UAV. 
+        The planner allows for both autonomous and pilot-directed operation. Inputs from both autonomous
+        and pilot-directed modes are evaluated and potentially adjusted to fit safety and feasibility constraints. 
+        The inputs are evaluated based on the current UAV state and the current tolerances from configuration parameters. 
     }
 
     % Begin Functional Requirements
