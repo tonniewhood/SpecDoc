@@ -6,210 +6,129 @@
         The planner allows for both autonomous and pilot-directed operation. Inputs from both autonomous
         and pilot-directed modes are evaluated and potentially adjusted to fit safety and feasibility constraints. 
         The inputs are evaluated based on the current UAV state and the current tolerances from configuration parameters.
-    }
-    
-    \subsubsection{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item Generate feasible waypoint trajectories based on input commands and UAV state.
-        \end{enumerate}
-
-
-    \subsubsection{Inputs}
-    \begin{enumerate}[(a)]
-        \item \emph{Waypoints and configuration parameters} \subitem{
-            Stuff
-        }
-    \end{enumerate}
-
-    \subsubsection{Outputs}
-    \begin{enumerate}[(a)]
-        \item \emph{Planned waypoints} \subitem{
-            Stuff
-        }
-    \end{enumerate}
-
-    \subsubsection{Internal Interfaces}
-    \begin{enumerate}[(a)]
-        \item \emph{Blah} \subitem{
-            Stuff
-        }
-    \end{enumerate}
-    
-    \subsubsection{Non-Functional Requirements}
-
-        \textbf{Energy}
-        \begin{enumerate}[(a)]
-            \item The Planner shall operate within the power budget allocated for the onboard processor.
-        \end{enumerate}
-
-        \textbf{Environments}
-        \begin{enumerate}[(a)]
-            \item The Planner shall tolerate expected operating temperatures and vibration levels.
-        \end{enumerate}
-
-        \textbf{Safety}
-        \begin{enumerate}[(a)]
-            \item The Planner shall not issue unsafe actuator commands under fault conditions.
-        \end{enumerate}
-
-        \textbf{Structure}
-        \begin{enumerate}[(a)]
-            \item The Planner shall expose well-defined APIs for its submodules.
-        \end{enumerate}
-
-        \textbf{Standards and Regulations}
-        \begin{enumerate}[(a)]
-            \item The Planner shall follow applicable coding and safety guidelines.
-        \end{enumerate}
-
-    \subsubsection{Submodules}
-    \subitem{
-        The Planner is comprised of three submodules. Each has aids in the overall functionality of the Planner.
+        The Planner is comprised of three submodules: Waypoint Planner, RC Mixer, and State Select. Each has aids in the overall functionality of the Planner.
     }
 
-    \paragraph{Waypoint Planner}
+    \subsubsection{Interfaces}
+    \paragraph{Inputs}
+    \begin{enumerate}
+        \item Waypoints and configuration parameters
+    \end{enumerate}
+    \paragraph{Outputs}
+    \begin{enumerate}
+        \item Planned waypoints
+    \end{enumerate}
+    \paragraph{Internal}
+    \begin{enumerate}
+        \item Blah
+    \end{enumerate}
+
+    \subsubsection{Waypoint Planner}
     \subitem{ %% TODO: fix this later <<<<<<<<<<<<<<<<<<<<<<<<<=============================================
         The Waypoint Planner submodule is responsible for generating feasible waypoint trajectories 
         based on input commands and the current UAV state. It processes both autonomous and pilot-directed inputs,
         ensuring that the generated waypoints adhere to safety and feasibility constraints.
     }
 
+    \begin{enumerate}
+    % \paragraph{Functional Requirements}
+        \item Consume waypoints and configuration parameters as defined in XXX:location
+        \item Output Planned waypoints as defined in XXX:location
+    % \textbf{Energy}
+        \item Execute within allocated CPU and power budgets.
 
-        \subparagraph{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item FR 1
-        \end{enumerate}
+    % \textbf{Environments}
+        \item Maintain performance across expected environmental conditions.
 
-        \subparagraph{Inputs}
-        \begin{enumerate}[(a)]
-            \item Waypoints and configuration parameters as defined in XXX:location
-        \end{enumerate}
+    % \textbf{Safety}
+        \item Ensure generated waypoints adhere to safety constraints.
 
-        \subparagraph{Outputs}
-        \begin{enumerate}[(a)]
-            \item Planned waypoints as defined in XXX:location
-        \end{enumerate}
+    % \textbf{Structure}
+        \item Modular design with clear interfaces.
 
-        \subparagraph{Non-Functional Requirements}
+    % \textbf{Standards and Regulations}
+        \item Follow applicable software development standards.
+    \end{enumerate}
 
-            \textbf{Energy}
-            \begin{enumerate}[(a)]
-                \item Execute within allocated CPU and power budgets.
-            \end{enumerate}
-
-            \textbf{Environments}
-            \begin{enumerate}[(a)]
-                \item Maintain performance across expected environmental conditions.
-            \end{enumerate}
-
-            \textbf{Safety}
-            \begin{enumerate}[(a)]
-                \item Ensure generated waypoints adhere to safety constraints.
-            \end{enumerate}
-
-            \textbf{Structure}
-            \begin{enumerate}[(a)]
-                \item Modular design with clear interfaces.
-            \end{enumerate}
-
-            \textbf{Standards and Regulations}
-            \begin{enumerate}[(a)]
-                \item Follow applicable software development standards.
-            \end{enumerate}
-
-    \paragraph{RC Mixer}
+    \subsubsection{RC Mixer}
     \subitem{ 
-        Crap
+        Description
     }
 
-        \subparagraph{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item FR 1
-        \end{enumerate}
+    \begin{enumerate}
+    % \paragraph{Functional Requirements}
+        \item Consume Item as defined in XXX:location
+        \item Output Item as defined in XXX:location
+    % \textbf{Energy}
+        \item Execute within allocated CPU and power budgets.
 
-        \subparagraph{Inputs}
-        \begin{enumerate}[(a)]
-            \item Item as defined in XXX:location
-        \end{enumerate}
+    % \textbf{Environments}
+        \item Maintain performance across expected environmental conditions.
 
-        \subparagraph{Outputs}
-        \begin{enumerate}[(a)]
-            \item Item as defined in XXX:location
-        \end{enumerate}
+    % \textbf{Safety}
+        \item Ensure generated waypoints adhere to safety constraints.
 
-        \subparagraph{Non-Functional Requirements}
+    % \textbf{Structure}
+        \item Modular design with clear interfaces.
 
-            \textbf{Energy}
-            \begin{enumerate}[(a)]
-                \item Execute within allocated CPU and power budgets.
-            \end{enumerate}
+    % \textbf{Standards and Regulations}
+        \item Follow applicable software development standards.
+    \end{enumerate}
 
-            \textbf{Environments}
-            \begin{enumerate}[(a)]
-                \item Maintain performance across expected environmental conditions.
-            \end{enumerate}
-
-            \textbf{Safety}
-            \begin{enumerate}[(a)]
-                \item Ensure generated waypoints adhere to safety constraints.
-            \end{enumerate}
-
-            \textbf{Structure}
-            \begin{enumerate}[(a)]
-                \item Modular design with clear interfaces.
-            \end{enumerate}
-
-            \textbf{Standards and Regulations}
-            \begin{enumerate}[(a)]
-                \item Follow applicable software development standards.
-            \end{enumerate}
-
-    \paragraph{State Select}
+    \subsubsection{State Select}
     \subitem{ 
-        Crap
+        Description
     }
-        \subparagraph{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item FR 1
-        \end{enumerate}
+    \begin{enumerate}
+    % \paragraph{Functional Requirements}
+        \item Consume Item as defined in XXX:location
+        \item Output Item as defined in XXX:location
+    % \textbf{Energy}
+        \item Execute within allocated CPU and power budgets.
 
-        \subparagraph{Inputs}
-        \begin{enumerate}[(a)]
-            \item Item as defined in XXX:location
-        \end{enumerate}
+    % \textbf{Environments}
+        \item Maintain performance across expected environmental conditions.
 
-        \subparagraph{Outputs}
-        \begin{enumerate}[(a)]
-            \item Item as defined in XXX:location
-        \end{enumerate}
+    % \textbf{Safety}
+        \item Ensure generated waypoints adhere to safety constraints.
 
-        \subparagraph{Non-Functional Requirements}
+    % \textbf{Structure}
+        \item Modular design with clear interfaces.
 
-            \textbf{Energy}
-            \begin{enumerate}[(a)]
-                \item Execute within allocated CPU and power budgets.
-            \end{enumerate}
+    % \textbf{Standards and Regulations}
+        \item Follow applicable software development standards.
+    \end{enumerate}
 
-            \textbf{Environments}
-            \begin{enumerate}[(a)]
-                \item Maintain performance across expected environmental conditions.
-            \end{enumerate}
+    % \subsubsection{Functional Requirements}
+    %     \begin{enumerate}
+    %         \item Generate feasible waypoint trajectories based on input commands and UAV state.
+    %     \end{enumerate}
+    
+    % \subsubsection{Non-Functional Requirements}
 
-            \textbf{Safety}
-            \begin{enumerate}[(a)]
-                \item Ensure generated waypoints adhere to safety constraints.
-            \end{enumerate}
+    %     \textbf{Energy}
+    %     \begin{enumerate}
+    %         \item The Planner shall operate within the power budget allocated for the onboard processor.
+    %     \end{enumerate}
 
-            \textbf{Structure}
-            \begin{enumerate}[(a)]
-                \item Modular design with clear interfaces.
-            \end{enumerate}
+    %     \textbf{Environments}
+    %     \begin{enumerate}
+    %         \item The Planner shall tolerate expected operating temperatures and vibration levels.
+    %     \end{enumerate}
 
-            \textbf{Standards and Regulations}
-            \begin{enumerate}[(a)]
-                \item Follow applicable software development standards.
-            \end{enumerate}
+    %     \textbf{Safety}
+    %     \begin{enumerate}
+    %         \item The Planner shall not issue unsafe actuator commands under fault conditions.
+    %     \end{enumerate}
 
+    %     \textbf{Structure}
+    %     \begin{enumerate}
+    %         \item The Planner shall expose well-defined APIs for its submodules.
+    %     \end{enumerate}
 
+    %     \textbf{Standards and Regulations}
+    %     \begin{enumerate}
+    %         \item The Planner shall follow applicable coding and safety guidelines.
+    %     \end{enumerate}
 
 %%% End Planner

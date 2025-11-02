@@ -1,163 +1,95 @@
 % Begin Logger
 \subsection{Logger}
 
-    \subitem{
-        Record mission data and provide mechanisms for transmission or storage by collecting telemetry, writing to storage, and/or sending data via communications links.
-    }
+\subitem{
+    The Logger records mission data and provides mechanisms for transmission or storage by collecting telemetry, writing to storage, and/or sending data via communications links. The Logger is comprised of two submodules: Storage and Transmitt. Each submodule handles data persistence and transmission for mission telemetry and diagnostic information.
+}
 
-    \subsubsection{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item Preserve critical telemetry and provide retrieval interfaces.
-        \end{enumerate}
+\subsubsection{Interfaces}
+\paragraph{Inputs}
+\begin{enumerate}
+    \item Telemetry streams and configuration parameters
+\end{enumerate}
+\paragraph{Outputs}
+\begin{enumerate}
+    \item Stored logs and transmitted telemetry packets
+\end{enumerate}
+\paragraph{Internal}
+\begin{enumerate}
+    \item Internal logging control signals
+\end{enumerate}
 
-    \subsubsection{Inputs}
-    \begin{enumerate}[(a)]
-        \item \emph{In 1} \subitem{
-            Descr.
-        }
-    \end{enumerate}
+\subsubsection{Storage}
+\subitem{
+    The Storage submodule is responsible for persisting telemetry and logs to onboard non-volatile memory,
+    ensuring data is retained for later retrieval and analysis.
+}
 
-    \subsubsection{Outputs}
-    \begin{enumerate}[(a)]
-        \item \emph{Out 1} \subitem{
-            Descr.
-        }
-    \end{enumerate}
+\begin{enumerate}
+% \paragraph{Functional Requirements}
+    \item Support retrieval by timestamp and event markers.
+    \item Consume telemetry streams to be persisted, storage configuration as defined in XXX:location
+    \item Output stored log files or records retrievable by time/index as defined in XXX:location
+% \textbf{Energy}
+    \item Execute within allocated CPU and power budgets.
+% \textbf{Environments}
+    \item Maintain performance across expected environmental conditions.
+% \textbf{Safety}
+    \item Protect critical logs and prevent data loss on faults.
+% \textbf{Structure}
+    \item Modular design with clear interfaces.
+% \textbf{Standards and Regulations}
+    \item Follow applicable software development standards.
+\end{enumerate}
 
-    \subsubsection{Internal Interfaces}
-    \begin{enumerate}[(a)]
-        \item \emph{Int 1} \subitem{
-            Descr.
-        }
-    \end{enumerate}
+\subsubsection{Transmitt}
+\subitem{
+    The Transmitt submodule handles transmission of selected telemetry data to ground stations or
+    other external systems via available communications links.
+}
 
-    \subsubsection{Non-Functional Requirements}
+\begin{enumerate}
+% \paragraph{Functional Requirements}
+    \item Provide telemetry prioritization and retransmission.
+    \item Consume selected telemetry streams and transmission policy as defined in XXX:location
+    \item Output telemetry packets transmitted via communications link as defined in XXX:location
+% \textbf{Energy}
+    \item Execute within allocated CPU and power budgets.
+% \textbf{Environments}
+    \item Maintain performance across expected environmental conditions.
+% \textbf{Safety}
+    \item Prioritize safety/health telemetry under degraded links.
+% \textbf{Structure}
+    \item Modular design with clear interfaces.
+% \textbf{Standards and Regulations}
+    \item Follow applicable software development standards.
+\end{enumerate}
 
-        \textbf{Energy}
-        \begin{enumerate}[(a)]
-            \item Logging shall not exceed allocated power/CPU budgets.
-        \end{enumerate}
+% \subsubsection{Functional Requirements}
+%     \begin{enumerate}
+%         \item Preserve critical telemetry and provide retrieval interfaces.
+%     \end{enumerate}
 
-        \textbf{Environments}
-        \begin{enumerate}[(a)]
-            \item Maintain logging integrity across operating conditions.
-        \end{enumerate}
-
-        \textbf{Safety}
-        \begin{enumerate}[(a)]
-            \item Logging should not interfere with real-time control operations.
-        \end{enumerate}
-
-        \textbf{Structure}
-        \begin{enumerate}[(a)]
-            \item Provide schemas and retention policies for stored data.
-        \end{enumerate}
-
-        \textbf{Standards and Regulations}
-        \begin{enumerate}[(a)]
-            \item Follow applicable data retention and privacy regulations.
-        \end{enumerate}
-
-    \subsubsection{Submodules}
-    \subitem{
-        The Logger is comprised of two submodules that handle data persistence and transmission
-        for mission telemetry and diagnostic information.
-    }
-
-    \paragraph{Storage}
-    \subitem{
-        The Storage submodule is responsible for persisting telemetry and logs to onboard non-volatile memory,
-        ensuring data is retained for later retrieval and analysis.
-    }
-
-        \subparagraph{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item Support retrieval by timestamp and event markers.
-        \end{enumerate}
-
-        \subparagraph{Inputs}
-        \begin{enumerate}[(a)]
-            \item Telemetry streams to be persisted, storage configuration as defined in XXX:location
-        \end{enumerate}
-
-        \subparagraph{Outputs}
-        \begin{enumerate}[(a)]
-            \item Stored log files or records retrievable by time/index as defined in XXX:location
-        \end{enumerate}
-
-        \subparagraph{Non-Functional Requirements}
-
-            \textbf{Energy}
-            \begin{enumerate}[(a)]
-                \item Execute within allocated CPU and power budgets.
-            \end{enumerate}
-
-            \textbf{Environments}
-            \begin{enumerate}[(a)]
-                \item Maintain performance across expected environmental conditions.
-            \end{enumerate}
-
-            \textbf{Safety}
-            \begin{enumerate}[(a)]
-                \item Protect critical logs and prevent data loss on faults.
-            \end{enumerate}
-
-            \textbf{Structure}
-            \begin{enumerate}[(a)]
-                \item Modular design with clear interfaces.
-            \end{enumerate}
-
-            \textbf{Standards and Regulations}
-            \begin{enumerate}[(a)]
-                \item Follow applicable software development standards.
-            \end{enumerate}
-
-    \paragraph{Transmitt}
-    \subitem{
-        The Transmitt submodule handles transmission of selected telemetry data to ground stations or
-        other external systems via available communications links.
-    }
-
-        \subparagraph{Functional Requirements}
-        \begin{enumerate}[(a)]
-            \item Provide telemetry prioritization and retransmission.
-        \end{enumerate}
-
-        \subparagraph{Inputs}
-        \begin{enumerate}[(a)]
-            \item Selected telemetry streams and transmission policy as defined in XXX:location
-        \end{enumerate}
-
-        \subparagraph{Outputs}
-        \begin{enumerate}[(a)]
-            \item Telemetry packets transmitted via communications link as defined in XXX:location
-        \end{enumerate}
-
-        \subparagraph{Non-Functional Requirements}
-
-            \textbf{Energy}
-            \begin{enumerate}[(a)]
-                \item Execute within allocated CPU and power budgets.
-            \end{enumerate}
-
-            \textbf{Environments}
-            \begin{enumerate}[(a)]
-                \item Maintain performance across expected environmental conditions.
-            \end{enumerate}
-
-            \textbf{Safety}
-            \begin{enumerate}[(a)]
-                \item Prioritize safety/health telemetry under degraded links.
-            \end{enumerate}
-
-            \textbf{Structure}
-            \begin{enumerate}[(a)]
-                \item Modular design with clear interfaces.
-            \end{enumerate}
-
-            \textbf{Standards and Regulations}
-            \begin{enumerate}[(a)]
-                \item Follow applicable software development standards.
-            \end{enumerate}
+% \subsubsection{Non-Functional Requirements}
+% \textbf{Energy}
+% \begin{enumerate}
+%     \item Logging shall not exceed allocated power/CPU budgets.
+% \end{enumerate}
+% \textbf{Environments}
+% \begin{enumerate}
+%     \item Maintain logging integrity across operating conditions.
+% \end{enumerate}
+% \textbf{Safety}
+% \begin{enumerate}
+%     \item Logging should not interfere with real-time control operations.
+% \end{enumerate}
+% \textbf{Structure}
+% \begin{enumerate}
+%     \item Provide schemas and retention policies for stored data.
+% \end{enumerate}
+% \textbf{Standards and Regulations}
+% \begin{enumerate}
+%     \item Follow applicable data retention and privacy regulations.
+% \end{enumerate}
 
 %%% End Logger

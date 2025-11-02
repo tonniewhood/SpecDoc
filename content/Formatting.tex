@@ -3,7 +3,7 @@
 \usepackage{hyperref}
 \usepackage{array}
 \usepackage{enumerate}
-
+\usepackage{enumitem}
 
 \setlength{\parindent}{0cm}
 \setlength{\oddsidemargin}{0in}
@@ -11,11 +11,30 @@
 \setlength{\topmargin}{-.5in}
 \setlength{\textheight}{9in}
 
-\title{{\Huge{\bf{Student Specifications Document Template Guide}}}}
+\title{{\Huge{\bf{UAV Flight Controller Specifications Document}}}}
 \author{Tanner Chase\\ Christian Hall\\ Anthony Wood}
 
 \renewcommand*{\familydefault}{\sfdefault}
 \renewcommand{\baselinestretch}{1.2}
+\makeatletter
+\renewcommand{\theenumi}{%
+  \ifnum\c@subparagraph>0 \thesubparagraph.\arabic{enumi}%
+  \else\ifnum\c@paragraph>0 \theparagraph.\arabic{enumi}%
+  \else\ifnum\c@subsubsection>0 \thesubsubsection.\arabic{enumi}%
+  \else\ifnum\c@subsection>0 \thesubsection.\arabic{enumi}%
+  \else\ifnum\c@section>0 \thesection.\arabic{enumi}%
+  \else\arabic{enumi}%
+  \fi\fi\fi\fi\fi
+}
+\makeatother
+
+\setlist[enumerate,1]{leftmargin=*, label=\theenumi}
+
+\makeatletter
+\renewcommand{\subitem}{
+  {\normalfont\normalsize\bfseries}% style
+}
+\makeatother
 
 \newcommand{\namesigdate}[2][5cm]{%
   \begin{tabular}{@{}p{#1}@{}}
