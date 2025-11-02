@@ -1,0 +1,116 @@
+% Begin Controller Verification
+\subsection{Controller Verification}
+
+\subitem{
+    % Verification of all Controller requirements.
+}
+
+\subsubsection{Preprocessor}
+\subitem{
+    % Verification of Preprocessor requirements.
+}
+\begin{enumerate}
+% \paragraph{Functional Requirements}
+    \item Verify consumption of raw sensor measurements.
+    \item Verify output of filtered sensor streams.
+% \textbf{Energy}
+    \item Verify execution within allocated CPU and power budgets.
+% \textbf{Environments}
+    \item Verify performance across expected environmental conditions.
+% \textbf{Safety}
+    \item Verify that filtering does not mask critical fault indicators.
+% \textbf{Structure}
+    \item Verify modular design and clear interfaces.
+% \textbf{Standards and Regulations}
+    \item Verify compliance with applicable software development standards.
+\end{enumerate}
+
+\subsubsection{PVA Controller}
+\subitem{
+    % Verification of PVA Controller requirements.
+}
+\begin{enumerate}
+% \paragraph{Functional Requirements}
+    \item Verify consumption of waypoints and state estimates.
+    \item Verify output of actuator-level setpoints.
+% \textbf{Energy}
+    \item Verify execution within allocated CPU and power budgets.
+% \textbf{Environments}
+    \item Verify performance across expected environmental conditions.
+% \textbf{Safety}
+    \item Verify bounded errors and safe fallback when estimates are invalid.
+% \textbf{Structure}
+    \item Verify modular design and clear interfaces.
+% \textbf{Standards and Regulations}
+    \item Verify compliance with applicable software development standards.
+\end{enumerate}
+
+\subsubsection{ATL Controller}
+\subitem{
+    % Verification of ATL Controller requirements.
+}
+\begin{enumerate}
+% \paragraph{Functional Requirements}
+    \item Verify consumption of desired attitude and torque references.
+    \item Verify output of low-level actuator commands.
+% \textbf{Energy}
+    \item Verify execution within allocated CPU and power budgets.
+% \textbf{Environments}
+    \item Verify performance across expected environmental conditions.
+% \textbf{Safety}
+    \item Verify enforcement of actuator limits and safe modes under faults.
+% \textbf{Structure}
+    \item Verify modular design and clear interfaces.
+% \textbf{Standards and Regulations}
+    \item Verify compliance with applicable software development standards.
+\end{enumerate}
+
+\subsubsection{Control Distributor}
+\subitem{
+    % Verification of Control Distributor requirements.
+}
+\begin{enumerate}
+% \paragraph{Functional Requirements}
+    \item Verify consumption of controller output commands.
+    \item Verify output of hardware actuator signals.
+% \textbf{Energy}
+    \item Verify execution within allocated CPU and power budgets.
+% \textbf{Environments}
+    \item Verify performance across expected environmental conditions.
+% \textbf{Safety}
+    \item Verify prevention of misrouting and provision of diagnostics and traceability.
+% \textbf{Structure}
+    \item Verify modular design and clear interfaces.
+% \textbf{Standards and Regulations}
+    \item Verify compliance with applicable software development standards.
+\end{enumerate}
+
+% \subsubsection{Functional Requirements}
+%     \begin{enumerate}
+%         \item Verify computation of actuator setpoints from planned trajectories and state estimates.
+%         \item Verify implementation of required control algorithms and scheduling.
+%     \end{enumerate}
+
+% \subsubsection{Non-Functional Requirements}
+% \textbf{Energy}
+% \begin{enumerate}
+%     \item Verify execution within the control loop CPU and power budgets.
+% \end{enumerate}
+% \textbf{Environments}
+% \begin{enumerate}
+%     \item Verify stability across environmental conditions and sensor noise.
+% \end{enumerate}
+% \textbf{Safety}
+% \begin{enumerate}
+%     \item Verify bounded outputs and safe behavior under saturation and faults.
+% \end{enumerate}
+% \textbf{Structure}
+% \begin{enumerate}
+%     \item Verify modular controller design with clear scheduling and interfaces.
+% \end{enumerate}
+% \textbf{Standards and Regulations}
+% \begin{enumerate}
+%     \item Verify compliance with applicable control and software standards.
+% \end{enumerate}
+
+%%% End Controller Verification
