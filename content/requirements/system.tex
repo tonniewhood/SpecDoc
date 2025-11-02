@@ -1,75 +1,116 @@
-% Begin System Requirements
 \subsection{System Requirements}
 
-    \subsubsection{Purpose}
-    \subsubitem{
-        Purpose
-    }
+\subitem{
+    The System provides the hardware and software foundation for all onboard modules. It includes processing, hardware capabilities, interfaces, hardware abstraction, and power management. The System is comprised of five main parts: Processing, Built in HW Capabilities, HW Interfaces, HAL, and Power Management.
+}
 
-    \subsubsection{Operation}
-    \subsubitem{
-        Operation
-    }
+\subsubsection{Interfaces}
+\paragraph{Inputs}
+\begin{enumerate}
+    \item Power supply, configuration parameters, and external signals
+\end{enumerate}
+\paragraph{Outputs}
+\begin{enumerate}
+    \item Processed data, actuator signals, and telemetry
+\end{enumerate}
+\paragraph{Internal}
+\begin{enumerate}
+    \item Internal buses, clocks, and control signals
+\end{enumerate}
 
-    % Begin Functional Requirements
-    \subsubsection{Functional Requirements}
+\subsubsection{Processing}
+\subitem{
+    The Processing part provides the computational resources and pipeline for all onboard software modules.
+}
+\begin{enumerate}
+    \item Provide sufficient compute for all modules.
+    \item Support real-time scheduling and isolation.
+    \item Ensure fault tolerance and recovery.
+\end{enumerate}
 
-        \begin{enumerate}[label=(\alph*)]
-            \item Requirement 1
-        \end{enumerate}
+\subsubsection{Built in HW Capabilities}
+\subitem{
+    Built-in hardware capabilities include sensors, actuators, and onboard peripherals required for mission execution.
+}
+\begin{enumerate}
+    \item Provide required sensors and actuators.
+    \item Ensure hardware health monitoring.
+    \item Support hardware expansion where feasible.
+\end{enumerate}
 
-        \paragraph{Submodules}
-        \begin{enumerate}[label=(\alph*)]
-            \item Processing Core
-            \item Processing Architecture
-            \item Hardware Platform
-            \item Configuration Tool
-        \end{enumerate}
-    %%% End Functional Requirements
+\subsubsection{HW Interfaces}
+\subitem{
+    Hardware interfaces provide connectivity between onboard modules and external devices.
+}
+\begin{enumerate}
+    \item Support standard communication protocols.
+    \item Ensure robust electrical and logical connections.
+    \item Provide diagnostics for interface health.
+\end{enumerate}
 
+\subsubsection{HAL}
+\subitem{
+    The Hardware Abstraction Layer (HAL) provides a uniform interface to hardware resources, abstracting device specifics from higher-level modules.
+}
+\begin{enumerate}
+    \item Expose consistent APIs for hardware access.
+    \item Isolate hardware changes from application logic.
+    \item Support safe fallback on hardware faults.
+\end{enumerate}
 
-    % Begin Interfaces
-    \subsubsection{Interfaces}
+\subsubsection{Power Management}
+\subitem{
+    Power Management ensures efficient and reliable power distribution to all system components.
+}
+\begin{enumerate}
+    \item Monitor and regulate power supply.
+    \item Support low-power and standby modes.
+    \item Protect against overcurrent and undervoltage.
+\end{enumerate}
 
-        \paragraph{Inputs}
-        \begin{enumerate}[label=(\alph*)]
-            \item Input 1
-        \end{enumerate}
+\subsubsection{Sub-Parts}
+\subitem{
+    The System is comprised of four functional sub-parts:
+}
+\begin{enumerate}
+    \item Planner
+    \item Controller
+    \item Navigation
+    \item Logger
+\end{enumerate}
 
-        \paragraph{Outputs}
-        \begin{enumerate}[label=(\alph*)]
-            \item Output 1
-        \end{enumerate}
-    %%% End Interfaces
+% \subsubsection{Functional Requirements}
+% \begin{enumerate}
+%     \item Provide computational, hardware, and interface resources for all modules.
+% \end{enumerate}
+% \paragraph{Submodules}
+% \begin{enumerate}
+%     \item Processing Core
+%     \item Processing Architecture
+%     \item Hardware Platform
+%     \item Configuration Tool
+% \end{enumerate}
 
+% \subsubsection{Non-Functional Requirements}
+% \textbf{Energy}
+% \begin{enumerate}
+%     \item Energy Requirement 1
+% \end{enumerate}
+% \textbf{Environments}
+% \begin{enumerate}
+%     \item Environment Requirement 1
+% \end{enumerate}
+% \textbf{Safety}
+% \begin{enumerate}
+%     \item Safety Requirement 1
+% \end{enumerate}
+% \textbf{Structure}
+% \begin{enumerate}
+%     \item Structure Requirement 1
+% \end{enumerate}
+% \textbf{Standards and Regulations}
+% \begin{enumerate}
+%     \item Standards and Regulations Requirement 1
+% \end{enumerate}
 
-    % Begin Non-Functional Requirements
-    \subsubsection{Non-Functional Requirements}
-
-        \paragraph{Energy}
-        \begin{enumerate}[label=(\alph*)]
-            \item Energy Requirement 1
-        \end{enumerate}
-
-        \paragraph{Environments}
-        \begin{enumerate}[label=(\alph*)]
-            \item Environment Requirement 1
-        \end{enumerate}
-
-        \paragraph{Safety}
-        \begin{enumerate}[label=(\alph*)]
-            \item Safety Requirement 1
-        \end{enumerate}
-
-        \paragraph{Structure}
-        \begin{enumerate}[label=(\alph*)]
-            \item Structure Requirement 1
-        \end{enumerate}
-
-        \paragraph{Standards and Regulations}
-        \begin{enumerate}[label=(\alph*)]
-            \item Standards and Regulations Requirement 1
-        \end{enumerate}
-    
-    %%% End Non-Functional Requirements
 %%% End System Requirements
