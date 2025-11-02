@@ -1,0 +1,256 @@
+% Begin Controller
+\subsection{Controller}
+
+    \subsubitem{Compute actuator setpoints from planned trajectories and state estimates.}
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Implement required control algorithms and scheduling.
+        \end{enumerate}
+
+    \subsubsection{Inputs}
+    \begin{enumerate}[(a)]
+        \item \emph{In 1} \subitem{
+            Descr.
+        }
+    \end{enumerate}
+
+    \subsubsection{Outputs}
+    \begin{enumerate}[(a)]
+        \item \emph{Out 1} \subitem{
+            Descr.
+        }
+    \end{enumerate}
+
+    \subsubsection{Internal Interfaces}
+    \begin{enumerate}[(a)]
+        \item \emph{Int 1} \subitem{
+            Descr.
+        }
+    \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \textbf{Energy}
+        \begin{enumerate}[(a)]
+            \item Execute within the control loop CPU and power budgets.
+        \end{enumerate}
+
+        \textbf{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain stability across environmental conditions and sensor noise.
+        \end{enumerate}
+
+        \textbf{Safety}
+        \begin{enumerate}[(a)]
+            \item Ensure bounded outputs and safe behavior under saturation and faults.
+        \end{enumerate}
+
+        \textbf{Structure}
+        \begin{enumerate}[(a)]
+            \item Modular controller design with clear scheduling and interfaces.
+        \end{enumerate}
+
+        \textbf{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable control and software standards.
+        \end{enumerate}
+
+    \subsubsection{Submodules}
+    \subitem{
+        The Controller is comprised of four submodules that work together to translate planned trajectories into actuator commands.
+    }
+
+    \paragraph{Preprocessor}
+    \subitem{
+        The Preprocessor submodule is responsible for preparing and conditioning inputs for the control loops,
+        including filtering and validation of sensor data before it is used by the controllers.
+    }
+
+        \subparagraph{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide filtered and validated sensor data to controllers.
+        \end{enumerate}
+
+        \subparagraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Raw sensor measurements as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Filtered sensor streams as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Non-Functional Requirements}
+
+            \textbf{Energy}
+            \begin{enumerate}[(a)]
+                \item Execute within allocated CPU and power budgets.
+            \end{enumerate}
+
+            \textbf{Environments}
+            \begin{enumerate}[(a)]
+                \item Maintain performance across expected environmental conditions.
+            \end{enumerate}
+
+            \textbf{Safety}
+            \begin{enumerate}[(a)]
+                \item Filtering shall never mask critical fault indicators.
+            \end{enumerate}
+
+            \textbf{Structure}
+            \begin{enumerate}[(a)]
+                \item Modular design with clear interfaces.
+            \end{enumerate}
+
+            \textbf{Standards and Regulations}
+            \begin{enumerate}[(a)]
+                \item Follow applicable software development standards.
+            \end{enumerate}
+
+    \paragraph{PVA Controller}
+    \subitem{
+        The PVA (Position/Velocity/Acceleration) Controller submodule computes control setpoints to track
+        planned trajectories and maintain the UAV along the desired path.
+    }
+
+        \subparagraph{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Maintain tracking error within specified bounds.
+        \end{enumerate}
+
+        \subparagraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Waypoints and state estimates as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Actuator-level setpoints as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Non-Functional Requirements}
+
+            \textbf{Energy}
+            \begin{enumerate}[(a)]
+                \item Execute within allocated CPU and power budgets.
+            \end{enumerate}
+
+            \textbf{Environments}
+            \begin{enumerate}[(a)]
+                \item Maintain performance across expected environmental conditions.
+            \end{enumerate}
+
+            \textbf{Safety}
+            \begin{enumerate}[(a)]
+                \item Ensure bounded errors and safe fallback when estimates are invalid.
+            \end{enumerate}
+
+            \textbf{Structure}
+            \begin{enumerate}[(a)]
+                \item Modular design with clear interfaces.
+            \end{enumerate}
+
+            \textbf{Standards and Regulations}
+            \begin{enumerate}[(a)]
+                \item Follow applicable software development standards.
+            \end{enumerate}
+
+    \paragraph{ATL Controller}
+    \subitem{
+        The ATL (Axis/Attitude/Torque-Level) Controller submodule translates higher-level commands
+        into low-level actuator demands, respecting actuator limits and constraints.
+    }
+
+        \subparagraph{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide actuator commands that respect actuator limits.
+        \end{enumerate}
+
+        \subparagraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Desired attitude and torque references as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Low-level actuator commands as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Non-Functional Requirements}
+
+            \textbf{Energy}
+            \begin{enumerate}[(a)]
+                \item Execute within allocated CPU and power budgets.
+            \end{enumerate}
+
+            \textbf{Environments}
+            \begin{enumerate}[(a)]
+                \item Maintain performance across expected environmental conditions.
+            \end{enumerate}
+
+            \textbf{Safety}
+            \begin{enumerate}[(a)]
+                \item Enforce actuator limits and safe modes under faults.
+            \end{enumerate}
+
+            \textbf{Structure}
+            \begin{enumerate}[(a)]
+                \item Modular design with clear interfaces.
+            \end{enumerate}
+
+            \textbf{Standards and Regulations}
+            \begin{enumerate}[(a)]
+                \item Follow applicable software development standards.
+            \end{enumerate}
+
+    \paragraph{Control Distributor}
+    \subitem{
+        The Control Distributor submodule routes control outputs to the correct actuator channels,
+        mapping logical control channels to physical hardware outputs.
+    }
+
+        \subparagraph{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Map logical control channels to hardware outputs.
+        \end{enumerate}
+
+        \subparagraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Controller output commands as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Hardware actuator signals as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Non-Functional Requirements}
+
+            \textbf{Energy}
+            \begin{enumerate}[(a)]
+                \item Execute within allocated CPU and power budgets.
+            \end{enumerate}
+
+            \textbf{Environments}
+            \begin{enumerate}[(a)]
+                \item Maintain performance across expected environmental conditions.
+            \end{enumerate}
+
+            \textbf{Safety}
+            \begin{enumerate}[(a)]
+                \item Prevent misrouting; provide diagnostics and traceability.
+            \end{enumerate}
+
+            \textbf{Structure}
+            \begin{enumerate}[(a)]
+                \item Modular design with clear interfaces.
+            \end{enumerate}
+
+            \textbf{Standards and Regulations}
+            \begin{enumerate}[(a)]
+                \item Follow applicable software development standards.
+            \end{enumerate}
+
+%%% End Controller

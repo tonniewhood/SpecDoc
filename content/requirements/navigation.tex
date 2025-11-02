@@ -1,0 +1,163 @@
+% Begin Navigation
+\subsection{Navigation}
+
+    \subitem{
+        Provide accurate state estimation and sensor selection to support planning and control by running estimators, selecting appropriate sensors, and publishing state estimates.
+    }
+
+    \subsubsection{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide timely, bounded-uncertainty state estimates.
+        \end{enumerate}
+
+    \subsubsection{Inputs}
+    \begin{enumerate}[(a)]
+        \item \emph{In 1} \subitem{
+            Descr.
+        }
+    \end{enumerate}
+
+    \subsubsection{Outputs}
+    \begin{enumerate}[(a)]
+        \item \emph{Out 1} \subitem{
+            Descr.
+        }
+    \end{enumerate}
+
+    \subsubsection{Internal Interfaces}
+    \begin{enumerate}[(a)]
+        \item \emph{Int 1} \subitem{
+            Descr.
+        }
+    \end{enumerate}
+
+    \subsubsection{Non-Functional Requirements}
+
+        \textbf{Energy}
+        \begin{enumerate}[(a)]
+            \item Complete estimation within allocated compute budget.
+        \end{enumerate}
+
+        \textbf{Environments}
+        \begin{enumerate}[(a)]
+            \item Maintain accuracy across sensor noise and environmental changes.
+        \end{enumerate}
+
+        \textbf{Safety}
+        \begin{enumerate}[(a)]
+            \item Provide validity flags and fail-safe estimates upon degraded inputs.
+        \end{enumerate}
+
+        \textbf{Structure}
+        \begin{enumerate}[(a)]
+            \item Provide uncertainty metrics and timestamps with each estimate.
+        \end{enumerate}
+
+        \textbf{Standards and Regulations}
+        \begin{enumerate}[(a)]
+            \item Follow applicable estimation and data handling standards.
+        \end{enumerate}
+
+    \subsubsection{Submodules}
+    \subitem{
+        The Navigation module is comprised of two submodules that work together to provide accurate state estimation
+        from available sensor inputs.
+    }
+
+    \paragraph{Sensor Selector}
+    \subitem{
+        The Sensor Selector submodule evaluates available sensor inputs and selects the best sensors
+        for the current conditions, ensuring robust state estimation even when some sensors fail or degrade.
+    }
+
+        \subparagraph{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide prioritized sensor streams and fallback choices.
+        \end{enumerate}
+
+        \subparagraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item All available sensor feeds and health indicators as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item Selected sensor feeds for estimator as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Non-Functional Requirements}
+
+            \textbf{Energy}
+            \begin{enumerate}[(a)]
+                \item Execute within allocated CPU and power budgets.
+            \end{enumerate}
+
+            \textbf{Environments}
+            \begin{enumerate}[(a)]
+                \item Maintain performance across expected environmental conditions.
+            \end{enumerate}
+
+            \textbf{Safety}
+            \begin{enumerate}[(a)]
+                \item Ensure safe fallbacks when preferred sensors are unavailable.
+            \end{enumerate}
+
+            \textbf{Structure}
+            \begin{enumerate}[(a)]
+                \item Modular design with clear interfaces.
+            \end{enumerate}
+
+            \textbf{Standards and Regulations}
+            \begin{enumerate}[(a)]
+                \item Follow applicable software development standards.
+            \end{enumerate}
+
+    \paragraph{Estimator}
+    \subitem{
+        The Estimator submodule fuses selected sensor inputs using sensor fusion algorithms
+        to produce the best estimate of the system state (position, velocity, attitude, etc.).
+    }
+
+        \subparagraph{Functional Requirements}
+        \begin{enumerate}[(a)]
+            \item Provide pose, velocity and other required state variables with uncertainty metrics.
+        \end{enumerate}
+
+        \subparagraph{Inputs}
+        \begin{enumerate}[(a)]
+            \item Selected sensor streams and configuration as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Outputs}
+        \begin{enumerate}[(a)]
+            \item State estimates with timestamps as defined in XXX:location
+        \end{enumerate}
+
+        \subparagraph{Non-Functional Requirements}
+
+            \textbf{Energy}
+            \begin{enumerate}[(a)]
+                \item Execute within allocated CPU and power budgets.
+            \end{enumerate}
+
+            \textbf{Environments}
+            \begin{enumerate}[(a)]
+                \item Maintain performance across expected environmental conditions.
+            \end{enumerate}
+
+            \textbf{Safety}
+            \begin{enumerate}[(a)]
+                \item Provide safe outputs when inputs are inconsistent or stale.
+            \end{enumerate}
+
+            \textbf{Structure}
+            \begin{enumerate}[(a)]
+                \item Modular design with clear interfaces.
+            \end{enumerate}
+
+            \textbf{Standards and Regulations}
+            \begin{enumerate}[(a)]
+                \item Follow applicable software development standards.
+            \end{enumerate}
+
+%%% End Navigation

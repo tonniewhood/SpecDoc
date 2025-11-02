@@ -1,5 +1,7 @@
 .PHONY: all clean
 
+all: SpecDoc.pdf clean
+
 SpecDoc.pdf: SpecDoc.tex **/*.tex *.png
 	pdflatex SpecDoc.tex
 
