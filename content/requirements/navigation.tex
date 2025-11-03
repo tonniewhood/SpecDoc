@@ -8,61 +8,71 @@
 \subsubsection{Interfaces}
 \paragraph{Inputs}
 \begin{enumerate}
-    \item Sensor measurements and configuration parameters
+    \item IMU, GPS, barometer, and magnetometer data from all available units
+    \item Navigation configuration parameters
 \end{enumerate}
 \paragraph{Outputs}
 \begin{enumerate}
-    \item State estimates and validity flags
+    \item Global position, velocity, attitude, and angular velocity state estimate and uncertainty with timestamp
 \end{enumerate}
 \paragraph{Internal}
 \begin{enumerate}
-    \item Internal sensor selection signals
+    \item Selected IMU, GPS, barometer, and magnetometer sensor feeds
 \end{enumerate}
 
 \subsubsection{Sensor Selector}
 \subitem{
-    The Sensor Selector submodule evaluates available sensor inputs and selects the best sensors
-    for the current conditions, ensuring robust state estimation even when some sensors fail or degrade.
+    The Sensor Selector submodule evaluates available sensor inputs and using configuration selects the best sensors
+    for the current conditions, ensuring robust operation and allowing user input.
 }
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Provide prioritized sensor streams and fallback choices.
-    \item Consume all available sensor feeds and health indicators as defined in XXX:location
-    \item Output selected sensor feeds for estimator as defined in XXX:location
+    \item The sensor selector unit shall consume all available sensor feeds defined in 4.4.1.1.1
+    \item The sensor selector unit shall consume sensor selection configuration as defined in 4.4.1.1.2
+    \item The sensor selector unit shall output selected sensor feeds for the estimator as defined in 4.4.1.3.1
 % \textbf{Energy}
-    \item Execute within allocated CPU and power budgets.
+    \item The sensor selector shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item Maintain performance across expected environmental conditions.
+    \item The sensor selector shall be function agnostic to the UAV environment.
 % \textbf{Safety}
-    \item Ensure safe fallbacks when preferred sensors are unavailable.
+    \item The sensor selector shall expose safe fallbacks sensors if available when preferred sensors are unavailable.
+    \item The sensor selector shall use health indicators to avoid selecting faulty sensors.
+    \item The sensor selector shall log sensor selection decisions for diagnostics.
 % \textbf{Structure}
-    \item Modular design with clear interfaces.
+    \item The sensor selector shall expose priority and fallback choices for sensors based on configuration.
+    \item The sensor selector shall only execute upon reception of new sensor data.
 % \textbf{Standards and Regulations}
-    \item Follow applicable software development standards.
+    % \item Follow applicable software development standards.
 \end{enumerate}
 
 \subsubsection{Estimator}
 \subitem{
     The Estimator submodule fuses selected sensor inputs using sensor fusion algorithms
-    to produce the best estimate of the system state (position, velocity, attitude, etc.).
+    to produce the best estimate of the system state.
 }
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Provide pose, velocity and other required state variables with uncertainty metrics.
-    \item Consume selected sensor streams and configuration as defined in XXX:location
-    \item Output state estimates with timestamps as defined in XXX:location
+    \item The estimator shall provide state estimate outputs and uncertainties as defined in 4.4.1.2.1.
+    \item The estimator shall consume selected sensor streams defined in 4.4.1.3.1.
+    \item The estimator shall comsume navigation configuration parameters as defined in 4.4.1.1.2.
 % \textbf{Energy}
-    \item Execute within allocated CPU and power budgets.
+    \item The estimator shall not consume more than 10\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item Maintain performance across expected environmental conditions.
+    \item The estimator shall estimate and compensate for signals with up to 20\% noise.
+    \item The estimator shall estimate and correct biases in sensor measurements within 20\%.
+    \item The estimator shall expose uncertainties that are accurate to 3 standad deviations.
+    \item The estimator shall use the configuration to be congnisant to sensor mounting orientations.
 % \textbf{Safety}
-    \item Provide safe outputs when inputs are inconsistent or stale.
+    \item The estimator shall log inconsistant inputs and anomalies.
+    \item The estimator shall use timestamps to identify and drop stale data.
+    \item The estimator shall ensure proper timestamps accompany each output estimate.
 % \textbf{Structure}
-    \item Modular design with clear interfaces.
+    \item The estimator shall provide a common interface for inputs of various measurement types.
+    \item The estimator shall expose interfaces with data that adheres to at most one body frame coordinate system and one inertial frame coordinate system.
 % \textbf{Standards and Regulations}
-    \item Follow applicable software development standards.
+    % \item Follow applicable software development standards.
 \end{enumerate}
 
 % \subsubsection{Functional Requirements}
