@@ -40,9 +40,68 @@
     % Verification of HAL requirements.
 }
 \begin{enumerate}
-    \item Verify exposure of consistent APIs for hardware access.
-    \item Verify isolation of hardware changes from application logic.
-    \item Verify support for safe fallback on hardware faults.
+    \item Requirement 4.1.4.1 shall be verified by reviewing the scope and deliverables document and ensuring it details all required capabilities and resources offered by the HAL.
+        The review will confirm the following:
+        \begin{itemize}
+            \item Document completeness and clarity.
+            \item Coverage of all hardware abstraction functionalities.
+            \item Consistency with ICD and implementation.
+        \end{itemize}
+    \item Requirement 4.1.4.2 shall be verified by reviewing the scope and deliverables document and confirming that it includes support for all specified functionalities.
+        The review will include verification of the following capabilities:
+        \begin{itemize}
+            \item GPIO pin control.
+            \item I2C/SPI bus management.
+            \item UART serial communication.
+            \item USB 2.0 serial communication.
+            \item CAN communication.
+            \item Micro SD card read and write support.
+            \item ADC support.
+            \item Timer control.
+            \item Interrupt control.
+            \item Generic device interfacing (with associated driver).
+        \end{itemize}
+    \item Requirement 4.1.4.3 shall be verified by reviewing the ICD and ensuring it outlines all APIs utilized for functionality described in the scope and deliverables document.
+        The review will confirm:
+        \begin{itemize}
+            \item Completeness of API documentation for all functionalities.
+            \item Clear function signatures and parameter descriptions.
+            \item Consistency between ICD and implementation.
+        \end{itemize}
+    \item Requirement 4.1.4.4 shall be verified by reviewing the ICD and confirming that memory ownership is clearly described for all functions receiving or returning memory pointers.
+        The review will validate:
+        \begin{itemize}
+            \item Explicit ownership documentation for each pointer parameter.
+            \item Caller vs. callee responsibility specifications.
+            \item Deallocation and lifecycle management guidelines.
+        \end{itemize}
+    \item Requirement 4.1.4.5 shall be verified using unit tests that call HAL functions and confirm that common status codes are returned to avoid silent failures.
+        The tests will include the following cases:
+        \begin{itemize}
+            \item Valid operations returning success status codes.
+            \item Invalid parameters returning appropriate error codes.
+            \item Resource unavailability returning specific error codes.
+            \item Verification that no function exits silently without returning a status code.
+        \end{itemize}
+    \item Requirement 4.1.4.6 shall be verified using unit tests that simulate fault conditions and verify that the HAL gracefully handles and reports faults.
+        The tests will include the following cases:
+        \begin{itemize}
+            \item Hardware communication failures with proper error reporting.
+            \item Invalid hardware states with graceful degradation.
+            \item Timeout conditions with appropriate fault handling.
+            \item Recovery mechanisms after transient faults.
+        \end{itemize}
+    \item Requirement 4.1.4.7 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S X.X.X.
+    \item Requirement 4.1.4.8 shall be verified using a unit test that exercises HAL functions under typical load and confirms CPU usage does not exceed 25\% of the total CPU time allocated to the onboard software system. 
+        This will be verified through profiling tools such as \texttt{perf} or \texttt{htop}. The test will include the following scenarios:
+        \begin{itemize}
+            \item Baseline HAL operations with minimal concurrent activity.
+            \item HAL operations during peak module execution.
+            \item Sustained HAL usage over extended operation periods.
+            \item Profiling of individual HAL function CPU overhead.
+        \end{itemize}
+    \item The accuracy of the HAL will be verified by unit tests that measure the setup, and response of all associated pins and interfaces. The HAL shall have at least
+        90\% code coverage as measured by a code coverage tool such as \texttt{gcov} or \texttt{lcov}.
 \end{enumerate}
 
 \subsubsection{Power Management}

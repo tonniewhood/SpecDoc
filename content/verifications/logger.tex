@@ -5,25 +5,51 @@
     % Verification of all Logger requirements.
 }
 
+\subsubsection{General Requirements}
+\subitem{
+    % Verification of Logger general requirements.
+}
+\begin{enumerate}
+    \item Requirement 4.5.3.1 shall be verified using an integration test that configures the Logger to receive all data streams from the Planner, Controller, and Navigation modules, and verifies that all data is successfully logged to storage and/or transmitted. The test will include the following cases:
+        \begin{itemize}
+            \item Logging all data streams simultaneously with default configuration under nominal load.
+            \item Logging selected data streams with custom configuration under nominal load.
+            \item Logging all data streams under high CPU and memory load to verify no data loss or corruption.
+        \end{itemize}
+    \item Requirement 4.5.3.2 shall be verified using an integration test that configures different rate limits for various data streams and verifies that the actual logging rates do not exceed the configured limits. The test will include the following cases:
+        \begin{itemize}
+            \item Rate limiting high-frequency sensor data to 10 Hz.
+            \item Rate limiting control outputs to 50 Hz.
+            \item Rate limiting state estimates to 100 Hz.
+            \item Verifying that data is properly decimated or dropped when rates exceed limits.
+        \end{itemize}
+    \item Requirement 4.5.3.3 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S X.X.X.
+    \item Requirement 4.5.3.4 shall be verified using the integration test outlined in \S5.5.1.1 and monitors CPU usage via profiling tools like \texttt{perf} or \texttt{htop} to ensure the Logger does not exceed 10\% of total CPU time.
+\end{enumerate}
+
 \subsubsection{Storage}
 \subitem{
     % Verification of Storage requirements.
 }
 \begin{enumerate}
-% \paragraph{Functional Requirements}
-    \item Verify support for retrieval by timestamp and event markers.
-    \item Verify persistence of telemetry streams and storage configuration.
-    \item Verify retrieval of stored log files or records by time/index.
-% \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
-% \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
-% \textbf{Safety}
-    \item Verify protection of critical logs and prevention of data loss on faults.
-% \textbf{Structure}
-    \item Verify modular design and clear interfaces.
-% \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    \item Requirement 4.5.4.1 shall be verified using the integration test outlined in \S5.5.1.1 and verifies that log files are created in the \texttt{/logs/} directory on onboard non-volatile memory.
+    \item Requirement 4.5.4.2 shall be verified using the integration test outlined in \S5.5.1.2 and verifies that each data stream creates a \texttt{.log} file with timestamped entries.
+    \item Requirement 4.5.4.3 shall be verified using an integration test that configures custom storage locations and file formats for all logged data and verifies that the Storage submodule correctly writes data to the specified locations in the specified formats. The test will include the following cases:
+        \begin{itemize}
+            \item Custom storage location under \texttt{/custom\_logs/}.
+            \item Custom binary file format instead of text.
+            \item Custom JSON format for structured data.
+            \item Verifying graceful fallback to default location if custom location is unavailable.
+        \end{itemize}
+    \item Requirement 4.5.4.4 shall be verified using an integration test that runs the Storage submodule with configured time duration and storage size limits and verifies that older log files are automatically deleted when limits are exceeded. The test will include the following cases:
+        \begin{itemize}
+            \item Time-based sliding window: logging data for a simulated 5 hours.
+            \item Size-based sliding window: logging data until storage exceeds 15MB and verifying oldest files are deleted to stay under 10MB. Input data should be artificially inflated to avoid long test durations.
+            \item Combined time and size limits: verifying the more restrictive limit is enforced.
+            \item Verifying default limits (4 hours and 10MB) when no configuration is provided.
+        \end{itemize}
+    \item Requirement 4.5.4.5 shall be verified using the integration test outlined in \S5.5.1.1 and then reads it back, computing based on the designed data verification method to verify data integrity.
+    \item Requirement 4.5.4.6 shall be verified using the integration test from \S5.5.1.1 and monitoring CPU load to ensure the Storage submodule does not exceed the allocated 5\% budget using profiling tools outlined in \S5.5.1.
 \end{enumerate}
 
 \subsubsection{Transmitt}
@@ -31,47 +57,19 @@
     % Verification of Transmitt requirements.
 }
 \begin{enumerate}
-% \paragraph{Functional Requirements}
-    \item Verify telemetry prioritization and retransmission.
-    \item Verify handling of selected telemetry streams and transmission policy.
-    \item Verify transmission of telemetry packets via communications link.
-% \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
-% \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
-% \textbf{Safety}
-    \item Verify prioritization of safety/health telemetry under degraded links.
-% \textbf{Structure}
-    \item Verify modular design and clear interfaces.
-% \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    \item Requirement 4.5.5.1 shall be verified using an integration test that configures the Transmitt submodule to transmit telemetry to three separate external systems simultaneously and verifies that all systems receive the expected data. The test will include the following cases:
+        \begin{itemize}
+            \item Transmitting to three ground stations with different IP addresses.
+            \item Verifying each system receives independent, configurable data streams.
+            \item Verifying transmission continues to remaining systems if one system becomes unreachable.
+        \end{itemize}
+    \item Requirement 4.5.5.2 shall be verified using an integration test that configures the Transmitt submodule to use both UDP and TCP protocols and verifies correct transmission and reception of telemetry data. The test will include the following cases:
+        \begin{itemize}
+            \item UDP transmission to a ground station and verifying packet reception (allowing for some packet loss).
+            \item TCP transmission to a ground station and verifying reliable, ordered packet reception.
+            \item Verifying protocol-specific error handling (e.g., connection drops for TCP, packet loss for UDP).
+        \end{itemize}
+    \item Requirement 4.5.5.3 shall be verified using the integration test from \S5.5.3.1 and monitoring CPU load to ensure the Transmitt submodule does not exceed the allocated 5\% budget using profiling tools outlined in \S5.5.1.
 \end{enumerate}
-
-% \subsubsection{Functional Requirements}
-%     \begin{enumerate}
-%         \item Verify preservation of critical telemetry and provision of retrieval interfaces.
-%     \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Verify logging does not exceed allocated power/CPU budgets.
-% \end{enumerate}
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Verify logging integrity across operating conditions.
-% \end{enumerate}
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Verify logging does not interfere with real-time control operations.
-% \end{enumerate}
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Verify provision of schemas and retention policies for stored data.
-% \end{enumerate}
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Verify compliance with applicable data retention and privacy regulations.
-% \end{enumerate}
 
 %%% End Logger Verification
