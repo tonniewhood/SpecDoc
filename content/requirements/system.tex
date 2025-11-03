@@ -44,6 +44,8 @@
     \item The central processor of the FCM shall support task isolation, such that a crash on one task does not cause failure of another task.
     \item The central processor of the FCM shall monitor the software program state in order to catch illegal operations.
     \item The central processor of the FCM shall provide a failsafe state to provide graceful failure upon catching such faults.
+    \item All code running on the FCM shall adhere to the MISRA C:2012 C coding standard and CERT C Secure Coding Standard or equivalent standards for other programming languages used. All code shall adhere to the
+        POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable. Any deviations should be documented and justified in the Software Design Document.
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
@@ -102,7 +104,7 @@
     \item The HAL ICD shall describe the ownership of all memory for all functions receiving or returning memory pointers.
     \item The HAL shall provide common status codes which are returned from all HAL functions to avoid silent failures.
     \item The HAL shall provide a method of gracefully handling faults and reporting those faults.
-    \item The HAL shall adhere to all coding standards described in \S X.X.X
+    \item The HAL shall adhere to all coding standards described in \S4.1.2.7
     \item The HAL shall use no more than 25\% of the total CPU time allocated to the onboard software system. This will be verified through profiling tools as such as \texttt{perf} or \texttt{htop}.
 \end{enumerate}
 
