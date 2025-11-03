@@ -15,7 +15,8 @@
     \item Requirement shall be verified by inspecting the software design documents and source code to confirm that a Real-Time Operating System (RTOS) is implemented for task scheduling.
     \item Requirement shall be verified by intentionally injecting faults (e.g., division by zero, null pointer access) into a non-critical task and observing that other tasks continue to operate as expected.
     \item Requirement shall be verified by executing a test suite that includes illegal operations (e.g., memory access violations) and confirming that the system's monitoring mechanisms detect and log these faults.
-    \item  Requirement shall be verified by triggering a fault and demonstrating that the system enters a predefined failsafe state (e.g., motor shutdown, error signal) as specified in the system design.
+    \item Requirement shall be verified by triggering a fault and demonstrating that the system enters a predefined failsafe state (e.g., motor shutdown, error signal) as specified in the system design.
+    \item Requirement shall be verified by using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S4.1.2.7
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
@@ -96,7 +97,7 @@
             \item Timeout conditions with appropriate fault handling.
             \item Recovery mechanisms after transient faults.
         \end{itemize}
-    \item Requirement 4.1.4.7 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S X.X.X.
+    \item Requirement 4.1.4.7 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S4.1.2.7.
     \item Requirement 4.1.4.8 shall be verified using a unit test that exercises HAL functions under typical load and confirms CPU usage does not exceed 25\% of the total CPU time allocated to the onboard software system. 
         This will be verified through profiling tools such as \texttt{perf} or \texttt{htop}. The test will include the following scenarios:
         \begin{itemize}
