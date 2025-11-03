@@ -10,9 +10,12 @@
     % Verification of Processing requirements.
 }
 \begin{enumerate}
-    \item Verify sufficient compute for all modules.
-    \item Verify support for real-time scheduling and isolation.
-    \item Verify fault tolerance and recovery.
+    \item Requirement shall be verified by inspecting the FCM hardware and its corresponding datasheet to confirm the presence of a central processor capable of executing software instructions.
+    \item Requirement shall be verified by executing a representative software load on the processor. Profiling tools and an oscilloscope will be used to measure task execution times and ensure all deadlines within the hyperperiod are met.
+    \item Requirement shall be verified by inspecting the software design documents and source code to confirm that a Real-Time Operating System (RTOS) is implemented for task scheduling.
+    \item Requirement shall be verified by intentionally injecting faults (e.g., division by zero, null pointer access) into a non-critical task and observing that other tasks continue to operate as expected.
+    \item Requirement shall be verified by executing a test suite that includes illegal operations (e.g., memory access violations) and confirming that the system's monitoring mechanisms detect and log these faults.
+    \item  Requirement shall be verified by triggering a fault and demonstrating that the system enters a predefined failsafe state (e.g., motor shutdown, error signal) as specified in the system design.
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
@@ -20,9 +23,11 @@
     % Verification of Built in HW Capabilities requirements.
 }
 \begin{enumerate}
-    \item Verify provision of required sensors and actuators.
-    \item Verify hardware health monitoring.
-    \item Verify support for hardware expansion where feasible.
+    \item Requirement shall be verified by visual inspection of the FCM to confirm the presence of an on-board Inertial Measurement Unit (IMU).
+    \item Requirement shall be verified by visual inspection of the FCM to confirm the presence of an on-board RC receiver.
+    \item Requirement shall be verified by visual inspection of the FCM to confirm the presence of an on-board micro-SD card reader.
+    \item Requirement shall be verified by using a multimeter to measure the output of the power monitoring circuit while the input voltage is varied and comparing the measurements to the values reported by the software.
+    \item Requirement shall be verified by applying a range of input voltages and measuring the regulated output voltage to ensure it remains within its specified tolerance.
 \end{enumerate}
 
 \subsubsection{HW Interfaces}
@@ -30,9 +35,9 @@
     % Verification of HW Interfaces requirements.
 }
 \begin{enumerate}
-    \item Verify support for standard communication protocols.
-    \item Verify robust electrical and logical connections.
-    \item Verify diagnostics for interface health.
+    \item Requirement shall be verified by inspecting the FCM datasheet and the physical PCB to confirm that pins for all specified hardware interfaces are exposed.
+    \item Requirement shall be verified by visual inspection of the FCM to confirm that physical ports are soldered onto the board for each interface.
+    \item Requirement shall be verified by visual inspection and physical manipulation of the connectors to confirm they feature a locking mechanism.
 \end{enumerate}
 
 \subsubsection{HAL}
@@ -109,9 +114,11 @@
     % Verification of Power Management requirements.
 }
 \begin{enumerate}
-    \item Verify monitoring and regulation of power supply.
-    \item Verify support for low-power and standby modes.
-    \item Verify protection against overcurrent and undervoltage.
+    \item Requirement shall be verified by connecting a variable DC power supply to the FCM's power input. The voltage shall be varied from 4.75V to 5.25V, and the system's operational status will be monitored to confirm it functions correctly throughout this range.
+    \item Requirement shall be verified by connecting an adjustable electronic load to the FCM. The current draw shall be slowly increased above 5 amps to confirm that the onboard protection mechanism (e.g., fuse or circuit breaker) activates and interrupts power to protect the hardware.
+    \item Requirement shall be verified by setting a power supply to a voltage below 4.75V and attempting to power on the device. It will be confirmed that the FCM does not initialize. The voltage will then be raised above 4.75V to confirm the device initializes correctly.
+    \item Requirement shall be verified by connecting a variable power supply and a multimeter to the FCM's power input. The input voltage will be varied, and the voltage reported by the FCM's software will be compared against the multimeter reading to ensure accuracy.
+    \item Requirement shall be verified by lowering the input voltage to 4.25V. It will be demonstrated through software logs or a debug interface that a signal is sent to the planner, and the planner initiates its low-voltage response protocol.
 \end{enumerate}
 
 
