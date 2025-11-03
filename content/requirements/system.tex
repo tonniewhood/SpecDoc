@@ -41,9 +41,9 @@
     \item The FCM shall provide a central processor to execute software instructions.
     \item The central processor of the FCM shall support a processing speed such that the hyperperiod of all of the tasks is $2.5$ ms($400$ Hz).
     \item The central processor of the FCM shall employ a real-time operating system to handle task scheduling.
-    \item The central processor of the FCM shall support task isolation, such that a failure of one task does not cause failure of another task.
-    \item The central processor of the FCM shall monitor system diagnostics in order to catch faults.
-    \item The central processor of the FCM shall provide recovery for detected faults.
+    \item The central processor of the FCM shall support task isolation, such that a crash on one task does not cause failure of another task.
+    \item The central processor of the FCM shall monitor the software program state in order to catch illegal operations.
+    \item The central processor of the FCM shall provide a failsafe state to provide graceful failure upon catching such faults.
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
@@ -54,7 +54,8 @@
     \item The FCM shall provide an on-board IMU.
     \item The FCM shall provide an on-board RC receiver for teleoperation.
     \item The FCM shall provide an on-board micro-SD card reader for data storage.
-    \item The FCM shall provide power monitoring and regulation.
+    \item The FCM shall provide on-board power monitoring.
+    \item The FCM shall provide on-board power regulation.
 \end{enumerate}
 
 \subsubsection{HW Interfaces}
@@ -71,10 +72,7 @@
         \item Micro SD
     \end{itemize}
     \item The ports for each of the specified interfaces shall be soldered onto the FCM.
-    \item 
-    \item Support standard communication protocols.
-    \item Ensure robust electrical and logical connections.
-    \item Provide diagnostics for interface health.
+    \item The ports for each of the specified interfaces shall support a locking mechanism to secure interface connections.
 \end{enumerate}
 
 \subsubsection{HAL}
@@ -116,8 +114,8 @@
     \item The FCM shall accept power via an external source at a voltage of $5V \pm 0.25V$.
     \item The FCM shall provide a method to protect hardware in case of current higher than $5$ amps.
     \item The FCM shall provide protection in the case of initial voltage lower than $4.75$ such that the device will not initialize.
-    \item The FCM shall monitor the power source throughout operation.
-    \item The FCM shall employ emergency protection procedures in the case of a critically low voltage ($4.25V$).
+    \item The FCM shall monitor the power source voltage throughout operation.
+    \item The FCM shall signal to the planner in the case of a critically low voltage ($4.25V$). This way the planner can attempt to ground the UAV before catastrophic crash.
 \end{enumerate}
 
 \subsubsection{Sub-Parts}
