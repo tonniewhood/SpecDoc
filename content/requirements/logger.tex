@@ -31,6 +31,7 @@
     \item The Logger shall support logging of all generated data from onboard modules.
     \item The Logger shall support rate limiting for all logged data.
     \item The Logger shall adhere to all coding standards defined in \S X.X.X.
+    \item The Logger shall use no more than 10\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
 
 \subsubsection{Storage}
@@ -42,11 +43,12 @@
 }
 
 \begin{enumerate}
-    \item The Storage submodule shall have default storage location of '/logs/' on onboard non-volatile memory.
-    \item The Storage submodule shall default to storing data from each data stream in a '.log' file with timestamps for each entry.
+    \item The Storage submodule shall have default storage location of \texttt{/logs/} on onboard non-volatile memory.
+    \item The Storage submodule shall default to storing data from each data stream in a \texttt{.log} file with timestamps for each entry.
     \item The Storage submodule shall support configuration parameters to define custom storage locations and file formats for all logged data.
     \item The Storage submodule shall support a sliding window of log files, based on either time duration or storage size limits defined in configuration parameters. The default shall be 4 hours and 10MB respectively.
     \item The Storage submodule shall implement a verification mechanism such as checksums or hashes for all stored data.
+    \item The Storage submodule shall use no more than 5\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
 
 \subsubsection{Transmitt}
@@ -58,6 +60,7 @@
 \begin{enumerate}
     \item The Transmitt submodule shall support transmission to up to three external systems simultaneously.
     \item The Transmitt submodule shall be support both UDP and TCP transmission protocols.
+    \item The Transmitt submodule shall use no more than 5\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
 
 %%% End Logger

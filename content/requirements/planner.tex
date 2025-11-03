@@ -30,7 +30,7 @@
 
     \subsubsection{General Requirements}
     \begin{enumerate}
-        \item The Planner shall accept the inputs defined in \S4.2.1.1 and produce a time-ordered sequence of desired states at no slower than 500 Hz. % << Time Subject to change
+        \item The Planner shall accept the inputs defined in \S4.2.1.1 and produce a time-ordered sequence of desired states while consuming no more than 20\% of the total CPU time allocated to the onboard software system.
         \item For all output states: \subitem{
         \begin{align*}
             V_\text{min} \le v \le V_\text{max}, &\text{ (airspeed) } \\
@@ -55,6 +55,7 @@
 
     \begin{enumerate}
         \item The Waypoint Planner shall include each commanded waypoint as a goal in the output sequence when inclusion does not violate any constraint in \S4.2.2.2, otherwise, it shall mark the waypoint as unreachable and produce the state that best approximates the commanded waypoint while still satisfying all constraints.
+        \item The Waypoint Planner shall use no more than 10\% of the total CPU time allocated to the onboard software system.
     \end{enumerate}
 
     \subsubsection{RC Mixer}
@@ -68,6 +69,7 @@
         \item The RC Mixer shall always produce a valid output regardless of input validity.
         \item The RC Mixer shall converge to zero climb rate and zero turn rate in the absence of valid RC inputs within 2 seconds. 
         \item The RC Mixer shall log all RC inputs and generated outputs with timestamps, any errors detected, and any adjustments made to the inputs to preserve safety.
+        \item The RC Mixer shall use no more than 7.5\% of the total CPU time allocated to the onboard software system.
     \end{enumerate}
 
     \subsubsection{State Select}
@@ -77,6 +79,7 @@
     }
     \begin{enumerate}
         \item The State Select shall always produce a valid output regardless of input validity.
+        \item The State Select shall use no more than 2.5\% of the total CPU time allocated to the onboard software system.
     \end{enumerate}
 
 %%% End Planner

@@ -95,6 +95,7 @@
     \item The HAL shall provide common status codes which are returned from all HAL functions to avoid silent failures.
     \item The HAL shall provide a method of gracefully handling faults and reporting those faults.
     \item The HAL shall adhere to all coding standards described in \S X.X.X
+    \item The HAL shall use no more than 25\% of the total CPU time allocated to the onboard software system. This will be verified through profiling tools as such as \texttt{perf} or \texttt{htop}.
 \end{enumerate}
 
 \subsubsection{Power Management}
