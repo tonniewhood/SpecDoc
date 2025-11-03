@@ -38,19 +38,23 @@
     The Processing part provides the computational resources and pipeline for all onboard software modules.
 }
 \begin{enumerate}
-    \item Provide sufficient compute for all modules.
-    \item Support real-time scheduling and isolation.
-    \item Ensure fault tolerance and recovery.
+    \item The flight module shall provide a central processor to execute software instructions.
+    \item The central processor of the flight module shall support a processing speed such that the hyperperiod of all of the tasks is $2.5$ ms($400$ Hz).
+    \item The central processor of the flight module shall employ a real-time operating system to handle task scheduling.
+    \item The central processor of the flight module shall support task isolation, such that a failure of one task does not cause failure of another task.
+    \item The central processor of the flight module shall monitor system diagnostics in order to catch faults.
+    \item The central processor of the flight module shall provide recovery for detected faults.
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
 \subitem{
-    Built-in hardware capabilities include sensors, actuators, and onboard peripherals required for mission execution.
+    Built-in hardware capabilities include sensors, and onboard peripherals required for mission execution.
 }
 \begin{enumerate}
-    \item Provide required sensors and actuators.
-    \item Ensure hardware health monitoring.
-    \item Support hardware expansion where feasible.
+    \item The flight module shall provide an on-board IMU.
+    \item The flight module shall provide an on-board RC receiver for teleoperation.
+    \item The flight module shall provide an on-board micro-SD card reader for data storage.
+    \item The flight module shall provide power monitoring and regulation.
 \end{enumerate}
 
 \subsubsection{HW Interfaces}
