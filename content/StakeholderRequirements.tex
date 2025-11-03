@@ -1,1 +1,44 @@
 \section{STAKEHOLDER REQUIREMENTS} 
+
+%list of stakeholders considered
+% 1. The design students
+% 2. Dr. Cripps and Joelyn
+% 3. UAS hobbyists(end user in theory)
+% 4. DOD(alternate theoretical end user)
+
+\subsection{Physical}
+\begin{enumerate}
+    \item The device must fit inside of a typical RC airplane. 
+    \item The flight controller must be battery powered.
+    \item The device must have ports commonly used for connecting parts used in flight.
+\end{enumerate}
+
+\subsection{Behaviorial}
+\begin{enumerate}
+    \item The flight controller must keep stable drone flight during operation.
+    \item The flight controller must handle autonomous flight as well as teleoperated flight.
+    \item Regardless of control method, the flight controller must avoid the plane losing stability or crashing.
+    \item The flight controller must be able to be configured with the parameters of a given plane.
+\end{enumerate}
+
+\subsection{Functional}
+\begin{enumerate}
+    \item The flight controller must provide proper inputs to the control surfaces of the drone.
+    \item The flight controller must accept a programmed mission plan for autonomous flight.
+    \item The flight controller must read from on board sensors in order to provide stable controls to the plane.
+    \item The flight controller must allow for additional sensors to be connected.
+\end{enumerate}
+
+\subsection{Environmental}
+\begin{enumerate}
+    \item The flight controller must be able to operate during potentially rough flight of a small airplane.
+    \item The flight controller must work the same even when the tempurature or air pressure changes.
+    \item The flight controller must be able to function regardless of vibrations from the plane.
+\end{enumerate}
+
+\subsection{Ethical}
+\begin{enumerate}
+    \item The flight controller must have safety checks to ensure sufficient power at least 5 minutes of flight.
+    \item In the event of a failure the flight controller must attempt to land safely instead of simply crashing.
+    \item The system must report and log failures of flight components.
+\end{enumerate}
