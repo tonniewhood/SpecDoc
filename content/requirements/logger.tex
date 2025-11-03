@@ -8,38 +8,45 @@
 \subsubsection{Interfaces}
 \paragraph{Inputs}
 \begin{enumerate}
-    \item Telemetry streams and configuration parameters
+    \item The Logger requires configuration parameters to determine where data is logged and sent, transmission rates, and data routing policies. These parameters will inclue file storage locations and transmission rates and protocols.
+    \item The Logger receives input waypoints from the Companion Computer as defined in 4.1.1.1.2.
+    \item The Logger receives desired states from the Planner as defined in 4.1.1.3.2.
+    \item The Logger receives the state mask from the Planner as defined in 4.1.1.3.3.
+    \item The Logger receives RC inputs from the Pilot as defined in 4.1.1.1.3.
+    \item The Logger receives adjustments to RC inputs from the Planner. These adjustments include trims and scaling factors of each control input.
+    \item The Logger receives raw sensor data from any onboard sensors as defined in 4.1.1.3.7 or external sensors as defined in 4.1.1.1.4.
+    \item The Logger receives state estimates from the Navigation as defined in 4.1.1.3.1.
+    \item The Logger receives raw control outputs from the Controller as defined in 4.1.1.3.5.
+    \item The Logger receives peripheral commands from the Controller as defined in 4.1.1.2.1.
+    \item The Logger receives any error reports from the Planner, Navigation, and Controller as defined in 4.1.1.3.6.
 \end{enumerate}
 \paragraph{Outputs}
 \begin{enumerate}
-    \item Stored logs and transmitted telemetry packets
+    \item The Logger outputs stored log files to the location defined in the configuration parameters.
+    \item The Logger outputs telemetry packets transmitted via communications link as defined in the configuration parameters.
 \end{enumerate}
-\paragraph{Internal}
+
+\subsubsection{General Requirements}
 \begin{enumerate}
-    \item Internal logging control signals
+    \item The Logger shall support logging of all generated data from onboard modules.
+    \item The Logger shall support rate limiting for all logged data.
+    \item The Logger shall adhere to all coding standards defined in \S X.X.X.
 \end{enumerate}
 
 \subsubsection{Storage}
 \subitem{
     The Storage submodule is responsible for persisting telemetry and logs to onboard non-volatile memory,
-    ensuring data is retained for later retrieval and analysis.
+    ensuring data is retained for later retrieval and analysis. The location and format of stored data can be defined
+    via configuration parameters. However, if no configuration is provided, the Storage submodule will default to storing data in
+    a predefined location in a standard format as defined in the proceeding requirements.
 }
 
 \begin{enumerate}
-% \paragraph{Functional Requirements}
-    \item Support retrieval by timestamp and event markers.
-    \item Consume telemetry streams to be persisted, storage configuration as defined in XXX:location
-    \item Output stored log files or records retrievable by time/index as defined in XXX:location
-% \textbf{Energy}
-    \item Execute within allocated CPU and power budgets.
-% \textbf{Environments}
-    \item Maintain performance across expected environmental conditions.
-% \textbf{Safety}
-    \item Protect critical logs and prevent data loss on faults.
-% \textbf{Structure}
-    \item Modular design with clear interfaces.
-% \textbf{Standards and Regulations}
-    \item Follow applicable software development standards.
+    \item The Storage submodule shall have default storage location of '/logs/' on onboard non-volatile memory.
+    \item The Storage submodule shall default to storing data from each data stream in a '.log' file with timestamps for each entry.
+    \item The Storage submodule shall support configuration parameters to define custom storage locations and file formats for all logged data.
+    \item The Storage submodule shall support a sliding window of log files, based on either time duration or storage size limits defined in configuration parameters. The default shall be 4 hours and 10MB respectively.
+    \item The Storage submodule shall implement a verification mechanism such as checksums or hashes for all stored data.
 \end{enumerate}
 
 \subsubsection{Transmitt}
@@ -49,47 +56,8 @@
 }
 
 \begin{enumerate}
-% \paragraph{Functional Requirements}
-    \item Provide telemetry prioritization and retransmission.
-    \item Consume selected telemetry streams and transmission policy as defined in XXX:location
-    \item Output telemetry packets transmitted via communications link as defined in XXX:location
-% \textbf{Energy}
-    \item Execute within allocated CPU and power budgets.
-% \textbf{Environments}
-    \item Maintain performance across expected environmental conditions.
-% \textbf{Safety}
-    \item Prioritize safety/health telemetry under degraded links.
-% \textbf{Structure}
-    \item Modular design with clear interfaces.
-% \textbf{Standards and Regulations}
-    \item Follow applicable software development standards.
+    \item The Transmitt submodule shall support transmission to up to three external systems simultaneously.
+    \item The Transmitt submodule shall be support both UDP and TCP transmission protocols.
 \end{enumerate}
-
-% \subsubsection{Functional Requirements}
-%     \begin{enumerate}
-%         \item Preserve critical telemetry and provide retrieval interfaces.
-%     \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Logging shall not exceed allocated power/CPU budgets.
-% \end{enumerate}
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Maintain logging integrity across operating conditions.
-% \end{enumerate}
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Logging should not interfere with real-time control operations.
-% \end{enumerate}
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Provide schemas and retention policies for stored data.
-% \end{enumerate}
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Follow applicable data retention and privacy regulations.
-% \end{enumerate}
 
 %%% End Logger
