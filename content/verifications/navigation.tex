@@ -11,19 +11,20 @@
 }
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Verify prioritized sensor streams and fallback choices.
-    \item Verify consumption of all available sensor feeds and health indicators.
-    \item Verify output of selected sensor feeds for estimator.
+    \item The Sensor Selector shall be verified by connecting multiple functioning IMUs, GPS units, barometers, and magnetometers to the system and observing that data from each is received and processed during operation.
+    \item The Sensor Selector shall be verified by loading different sensor configuration files and observing that the module updates its active sensor preferences and priorities according to each configuration.
+    \item The Sensor Selector shall be verified by running the system with several sensors of each type and confirming that the Estimator receives data only from the sensors selected by the Sensor Selector.
 % \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
+    \item The Sensor Selector shall be verified by operating the system under representative load conditions and timing selection cycles to confirm that selection operations complete within 5\% of total available processing time.
 % \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
+    \item The Sensor Selector shall be verified by running flight-equivalent tests in varied conditions, such as static, moving, and magnetically disturbed environments, and confirming consistent sensor selection behavior and output availability.
 % \textbf{Safety}
-    \item Verify safe fallbacks when preferred sensors are unavailable.
+    \item The Sensor Selector shall be verified by disabling the highest-priority sensor during operation and confirming that the module automatically switches to a valid fallback sensor without interrupting output availability.
+    \item The Sensor Selector shall be verified by injecting simulated sensor faults (i.e. unrealistic values or loss of updates) and confirming that the module excludes those sensors from selection.
+    \item The Sensor Selector shall be verified by executing a sequence of sensor connection and disconnection events and confirming that each selection change and its rationale are recorded in the system log.
 % \textbf{Structure}
-    \item Verify modular design and clear interfaces.
-% \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    \item The Sensor Selector shall be verified by configuring sensors with distinct priority levels and observing that the selected sensors match the expected order of precedence and fallback defined in configuration.
+    \item The Sensor Selector shall be verified by providing new data at controlled intervals and confirming that selection processing only occurs immediately after new sensor data are received.
 \end{enumerate}
 
 \subsubsection{Estimator}
@@ -32,46 +33,24 @@
 }
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Verify provision of pose, velocity, and other required state variables with uncertainty metrics.
-    \item Verify consumption of selected sensor streams and configuration.
-    \item Verify output of state estimates with timestamps.
+    \item The Estimator shall be verified by supplying known-position and -orientation sensor data and confirming that the estimated position, velocity, attitude, and angular rate outputs match ground truth within expected uncertainty bounds as defined in 4.4.1.2.1.
+    \item The Estimator shall be verified by providing the Estimator with only the selected sensor outputs from the Sensor Selector and confirming that no data from unselected sensors influence the results.
+    \item The Estimator shall be verified by loading different sets of navigation parameters and confirming that the estimator behavior and output statistics change according to those configurations.
+    \item The Estimator shall be verified by recording all sensor inputs and state outputs during a test run and confirming that both are available in the diagnostic log files for review.
 % \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
+    \item The Estimator shall be verified by operating under representative mission conditions and measuring the total processing duration per update cycle to confirm that it remains within 10\% of total available computational time.
 % \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
+    \item The Estimator shall be verified by applying test sensor data containing up to 20\% random noise and comparing estimated states against the known true trajectory to confirm that deviations remain within accuracy limits.
+    \item The Estimator shall be verified by adding a known constant bias to one or more sensor inputs and confirming that the estimator's bias correction reduces the resulting error to within 20\% of the nominal value.
+    \item The Estimator shall be verified by running multiple trials with randomized noise and comparing the spread of estimation errors to the reported uncertainty to confirm correspondence within three standard deviations.
+    \item The Estimator shall be verified by mounting sensors in different known orientations and confirming that the estimated attitude and derived quantities correctly reflect the new orientations.
 % \textbf{Safety}
-    \item Verify safe outputs when inputs are inconsistent or stale.
+    \item The Estimator shall be verified by providing inconsistent sensor data (i.e. conflicting altitude or attitude readings) and confirming that these events are detected and logged as anomalies.
+    \item The Estimator shall be verified by delaying sensor data packets to simulate stale information and confirming that outdated data are excluded from use in state estimation.
+    \item The Estimator shall be verified by examining output data during operation to confirm that every estimate includes a timestamp that matches the time of input data used.
 % \textbf{Structure}
-    \item Verify modular design and clear interfaces.
-% \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    \item The Estimator shall be verified by providing various combinations of sensor measurements (i.e. IMU only, IMU + GPS, IMU + barometer) and confirming that all are processed through a common data pathway to produce consistent state outputs.
+    \item The Estimator shall be verified by collecting state outputs and confirming through comparison against reference transformations that all data conform to a single body frame and a single inertial frame definition.
 \end{enumerate}
-
-% \subsubsection{Functional Requirements}
-%     \begin{enumerate}
-%         \item Verify timely, bounded-uncertainty state estimates.
-%     \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Verify estimation within allocated compute budget.
-% \end{enumerate}
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Verify accuracy across sensor noise and environmental changes.
-% \end{enumerate}
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Verify provision of validity flags and fail-safe estimates upon degraded inputs.
-% \end{enumerate}
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Verify provision of uncertainty metrics and timestamps with each estimate.
-% \end{enumerate}
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Verify compliance with applicable estimation and data handling standards.
-% \end{enumerate}
 
 %%% End Navigation Verification

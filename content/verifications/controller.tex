@@ -11,18 +11,21 @@
 }
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Verify consumption of raw sensor measurements.
-    \item Verify output of filtered sensor streams.
+    \item The Preprocessor shall be verified by supplying planned setpoints and state estimates under all supported operating modes and confirming that processed outputs match expected values for each mode.
+    \item The Preprocessor shall be verified by introducing missing, invalid, or out-of-bounds inputs and confirming that safe defaults are substituted, last valid outputs are preserved for up to one cycle, and all such events are logged with reason and timestamp.
+    \item The Preprocessor shall be verified by changing controller configuration parameters and confirming that enabling/disabling of states and setpoints occurs as specified, and that zeroing or slewing is applied only to disabled setpoints.
+    \item The Preprocessor shall be verified by applying rapid mode transitions (i.e. idle to flight, flight to disarmed) and confirming that only expected states are zeroed or slewed, and that outputs remain stable.
 % \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
+    \item The Preprocessor shall be verified by measuring execution time per control cycle on the target platform and confirming it remains below 5\% of the total loop period.
 % \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
+    \item The Preprocessor shall be verified by repeating functional tests under simulated environmental conditions (temperature, vibration, sensor delay) and confirming consistent results.
 % \textbf{Safety}
-    \item Verify that filtering does not mask critical fault indicators.
+    \item The Preprocessor shall be verified by injecting out-of-range setpoints and confirming that saturation and rate limiting are properly applied according to configuration and UAV state.
+    \item The Preprocessor shall be verified by simulating non-flight conditions and confirming that outputs are safe and no actuator commands are issued.
 % \textbf{Structure}
-    \item Verify modular design and clear interfaces.
+    \item The Preprocessor shall be verified by reviewing diagnostic logs to confirm that all detected input faults and mode transitions are accurately recorded.
 % \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    % \item The Preprocessor shall be verified by reviewing implementation artifacts and test records for compliance with required control software standards.
 \end{enumerate}
 
 \subsubsection{PVA Controller}
@@ -31,18 +34,23 @@
 }
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Verify consumption of waypoints and state estimates.
-    \item Verify output of actuator-level setpoints.
+    \item The PVA Controller shall be verified by applying step, ramp, and parabolic position commands and confirming that output attitude and torque targets follow the desired trajectory with steady-state error less than twice the defined platform size.
+    \item The PVA Controller shall be verified by injecting known disturbances (i.e. wind bias, external acceleration) and verifying disturbance rejection through bounded tracking errors.
+    \item The PVA Controller shall be verified by sweeping gain parameters and confirming the effect on closed-loop stability and tracking performance.
+    \item The PVA Controller shall be verified by providing invalid or missing setpoints and confirming that bounded errors and safe fallback behavior are observed.
 % \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
+    \item The PVA Controller shall be verified by measuring computation duration per cycle and confirming processing load remains within 10\% of available control cycle time.
 % \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
+    \item The PVA Controller shall be verified by introducing up to 20\% sensor noise and confirming maintained stability and bounded output.
+    \item The PVA Controller shall be verified by running tests with different gain and tuning parameter configurations and confirming that changes are reflected in controller response.
 % \textbf{Safety}
-    \item Verify bounded errors and safe fallback when estimates are invalid.
+    \item The PVA Controller shall be verified by driving control inputs to cause near-saturation conditions and confirming proper limit enforcement and diagnostic logging.
+    \item The PVA Controller shall be verified by simulating stall-prone conditions and confirming that attitude commands are limited to avoid stall regions.
+    \item The PVA Controller shall be verified by reviewing logs to confirm that all control errors and saturation events are recorded with timestamps.
 % \textbf{Structure}
-    \item Verify modular design and clear interfaces.
+    \item The PVA Controller shall be verified by confirming that position, velocity, and acceleration setpoints are generated in all three axes and correctly propagated to dependent modules.
 % \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    % \item The PVA Controller shall be verified by reviewing test coverage and control law documentation for conformity with applicable control standards.
 \end{enumerate}
 
 \subsubsection{ATL Controller}
@@ -51,18 +59,23 @@
 }
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Verify consumption of desired attitude and torque references.
-    \item Verify output of low-level actuator commands.
+    \item The ATL Controller shall be verified by applying known attitude and throttle setpoints and confirming that output actuator commands achieve the target within allowable error.
+    \item The ATL Controller shall be verified by performing ramp attitude input tests and verifying maximum steady-state tracking error does not exceed 1 degree.
+    \item The ATL Controller shall be verified by varying configuration parameters and confirming correct mapping of gain settings to response dynamics.
+    \item The ATL Controller shall be verified by providing invalid or missing setpoints and confirming that bounded errors and safe fallback behavior are observed.
 % \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
+    \item The ATL Controller shall be verified by measuring computational latency per cycle and verifying utilization under 10\% of total control loop time.
 % \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
+    \item The ATL Controller shall be verified by applying synthetic sensor noise (up to 20\%) and external disturbances to confirm maintained control stability.
+    \item The ATL Controller shall be verified by running tests with different gain and tuning parameter configurations and confirming that changes are reflected in controller response.
 % \textbf{Safety}
-    \item Verify enforcement of actuator limits and safe modes under faults.
+    \item The ATL Controller shall be verified by forcing actuator saturation conditions and confirming bounded error behavior and saturation logging.
+    \item The ATL Controller shall be verified by simulating aerodynamic stall conditions and confirming throttle and attitude limits are enforced.
+    \item The ATL Controller shall be verified by reviewing logs to confirm that all control errors and saturation events are recorded with timestamps.
 % \textbf{Structure}
-    \item Verify modular design and clear interfaces.
+    \item The ATL Controller shall be verified by confirming that attitude and angular velocity setpoints are generated in all three axes, and throttle setpoints are independent of attitude and angular velocity.
 % \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    % \item The ATL Controller shall be verified by ensuring test results meet control design quality and documentation requirements for software verification.
 \end{enumerate}
 
 \subsubsection{Control Distributor}
@@ -71,46 +84,23 @@
 }
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item Verify consumption of controller output commands.
-    \item Verify output of hardware actuator signals.
+    \item The Control Distributor shall be verified by applying known intermediary actuator commands and verifying correct mapping to physical actuator outputs based on configuration.
+    \item The Control Distributor shall be verified by conducting signal continuity checks from logical control channels to each actuator interface pin.
+    \item The Control Distributor shall be verified by executing non-flight output mapping tests and confirming correct routing of signals to simulated actuator hardware.
+    \item The Control Distributor shall be verified by changing configuration parameters and confirming that logical-to-physical channel mapping updates as expected.
 % \textbf{Energy}
-    \item Verify execution within allocated CPU and power budgets.
+    \item The Control Distributor shall be verified by measuring task timing and verifying utilization below 5\% of total processing bandwidth.
 % \textbf{Environments}
-    \item Verify performance across expected environmental conditions.
+    \item The Control Distributor shall be verified by simulating actuator line failure or hardware disconnect and confirming that fallback or degraded mode operation occurs.
+    \item The Control Distributor shall be verified by running tests in various environmental conditions and confirming robust operation.
 % \textbf{Safety}
-    \item Verify prevention of misrouting and provision of diagnostics and traceability.
+    \item The Control Distributor shall be verified by confirming that throttle outputs are disabled when in disarmed mode.
+    \item The Control Distributor shall be verified by inducing configuration mismatches and verifying the system logs routing errors and maintains control on remaining channels.
+    \item The Control Distributor shall be verified by injecting single-output hardware faults and confirming operation continuity and logging of the event.
 % \textbf{Structure}
-    \item Verify modular design and clear interfaces.
+    \item The Control Distributor shall be verified by cross-checking logical-to-physical channel mapping with configuration tables for correctness.
 % \textbf{Standards and Regulations}
-    \item Verify compliance with applicable software development standards.
+    % \item The Control Distributor shall be verified by confirming module behavior adheres to relevant control distribution and safety software standards.
 \end{enumerate}
-
-% \subsubsection{Functional Requirements}
-%     \begin{enumerate}
-%         \item Verify computation of actuator setpoints from planned trajectories and state estimates.
-%         \item Verify implementation of required control algorithms and scheduling.
-%     \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Verify execution within the control loop CPU and power budgets.
-% \end{enumerate}
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Verify stability across environmental conditions and sensor noise.
-% \end{enumerate}
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Verify bounded outputs and safe behavior under saturation and faults.
-% \end{enumerate}
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Verify modular controller design with clear scheduling and interfaces.
-% \end{enumerate}
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Verify compliance with applicable control and software standards.
-% \end{enumerate}
 
 %%% End Controller Verification
