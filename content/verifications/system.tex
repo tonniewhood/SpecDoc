@@ -40,74 +40,109 @@
     \item Requirement shall be verified by visual inspection and physical manipulation of the connectors to confirm they feature a locking mechanism.
 \end{enumerate}
 
-\subsubsection{HAL}
+% \subsubsection{HAL}
+% \subitem{
+%     % Verification of HAL requirements.
+% }
+% \begin{enumerate}
+%     \item Requirement 4.1.4.1 shall be verified by reviewing the scope and deliverables document and ensuring it details all required capabilities and resources offered by the HAL.
+%         The review will confirm the following:
+%         \begin{itemize}
+%             \item Document completeness and clarity.
+%             \item Coverage of all hardware abstraction functionalities.
+%             \item Consistency with ICD and implementation.
+%         \end{itemize}
+%     \item Requirement 4.1.4.2 shall be verified by reviewing the scope and deliverables document and confirming that it includes support for all specified functionalities.
+%         The review will include verification of the following capabilities:
+%         \begin{itemize}
+%             \item GPIO pin control.
+%             \item I2C/SPI bus management.
+%             \item UART serial communication.
+%             \item USB 2.0 serial communication.
+%             \item CAN communication.
+%             \item Micro SD card read and write support.
+%             \item ADC support.
+%             \item Timer control.
+%             \item Interrupt control.
+%             \item Generic device interfacing (with associated driver).
+%         \end{itemize}
+%     \item Requirement 4.1.4.3 shall be verified by reviewing the ICD and ensuring it outlines all APIs utilized for functionality described in the scope and deliverables document.
+%         The review will confirm:
+%         \begin{itemize}
+%             \item Completeness of API documentation for all functionalities.
+%             \item Clear function signatures and parameter descriptions.
+%             \item Consistency between ICD and implementation.
+%         \end{itemize}
+%     \item Requirement 4.1.4.4 shall be verified by reviewing the ICD and confirming that memory ownership is clearly described for all functions receiving or returning memory pointers.
+%         The review will validate:
+%         \begin{itemize}
+%             \item Explicit ownership documentation for each pointer parameter.
+%             \item Caller vs. callee responsibility specifications.
+%             \item Deallocation and lifecycle management guidelines.
+%         \end{itemize}
+%     \item Requirement 4.1.4.5 shall be verified using unit tests that call HAL functions and confirm that common status codes are returned to avoid silent failures.
+%         The tests will include the following cases:
+%         \begin{itemize}
+%             \item Valid operations returning success status codes.
+%             \item Invalid parameters returning appropriate error codes.
+%             \item Resource unavailability returning specific error codes.
+%             \item Verification that no function exits silently without returning a status code.
+%         \end{itemize}
+%     \item Requirement 4.1.4.6 shall be verified using unit tests that simulate fault conditions and verify that the HAL gracefully handles and reports faults.
+%         The tests will include the following cases:
+%         \begin{itemize}
+%             \item Hardware communication failures with proper error reporting.
+%             \item Invalid hardware states with graceful degradation.
+%             \item Timeout conditions with appropriate fault handling.
+%             \item Recovery mechanisms after transient faults.
+%         \end{itemize}
+%     \item Requirement 4.1.4.7 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S4.1.2.7.
+%     \item Requirement 4.1.4.8 shall be verified using a unit test that exercises HAL functions under typical load and confirms CPU usage does not exceed 25\% of the total CPU time allocated to the onboard software system. 
+%         This will be verified through profiling tools such as \texttt{perf} or \texttt{htop}. The test will include the following scenarios:
+%         \begin{itemize}
+%             \item Baseline HAL operations with minimal concurrent activity.
+%             \item HAL operations during peak module execution.
+%             \item Sustained HAL usage over extended operation periods.
+%             \item Profiling of individual HAL function CPU overhead.
+%         \end{itemize}
+%     \item The accuracy of the HAL will be verified by unit tests that measure the setup, and response of all associated pins and interfaces. The HAL shall have at least
+%         90\% code coverage as measured by a code coverage tool such as \texttt{gcov} or \texttt{lcov}.
+% \end{enumerate}
+
+\subsubsection{Hardware Requirements}
 \subitem{
-    % Verification of HAL requirements.
+    % Verification of Hardware requirements.
 }
 \begin{enumerate}
-    \item Requirement 4.1.4.1 shall be verified by reviewing the scope and deliverables document and ensuring it details all required capabilities and resources offered by the HAL.
-        The review will confirm the following:
-        \begin{itemize}
-            \item Document completeness and clarity.
-            \item Coverage of all hardware abstraction functionalities.
-            \item Consistency with ICD and implementation.
-        \end{itemize}
-    \item Requirement 4.1.4.2 shall be verified by reviewing the scope and deliverables document and confirming that it includes support for all specified functionalities.
-        The review will include verification of the following capabilities:
-        \begin{itemize}
-            \item GPIO pin control.
-            \item I2C/SPI bus management.
-            \item UART serial communication.
-            \item USB 2.0 serial communication.
-            \item CAN communication.
-            \item Micro SD card read and write support.
-            \item ADC support.
-            \item Timer control.
-            \item Interrupt control.
-            \item Generic device interfacing (with associated driver).
-        \end{itemize}
-    \item Requirement 4.1.4.3 shall be verified by reviewing the ICD and ensuring it outlines all APIs utilized for functionality described in the scope and deliverables document.
-        The review will confirm:
-        \begin{itemize}
-            \item Completeness of API documentation for all functionalities.
-            \item Clear function signatures and parameter descriptions.
-            \item Consistency between ICD and implementation.
-        \end{itemize}
-    \item Requirement 4.1.4.4 shall be verified by reviewing the ICD and confirming that memory ownership is clearly described for all functions receiving or returning memory pointers.
-        The review will validate:
-        \begin{itemize}
-            \item Explicit ownership documentation for each pointer parameter.
-            \item Caller vs. callee responsibility specifications.
-            \item Deallocation and lifecycle management guidelines.
-        \end{itemize}
-    \item Requirement 4.1.4.5 shall be verified using unit tests that call HAL functions and confirm that common status codes are returned to avoid silent failures.
-        The tests will include the following cases:
-        \begin{itemize}
-            \item Valid operations returning success status codes.
-            \item Invalid parameters returning appropriate error codes.
-            \item Resource unavailability returning specific error codes.
-            \item Verification that no function exits silently without returning a status code.
-        \end{itemize}
-    \item Requirement 4.1.4.6 shall be verified using unit tests that simulate fault conditions and verify that the HAL gracefully handles and reports faults.
-        The tests will include the following cases:
-        \begin{itemize}
-            \item Hardware communication failures with proper error reporting.
-            \item Invalid hardware states with graceful degradation.
-            \item Timeout conditions with appropriate fault handling.
-            \item Recovery mechanisms after transient faults.
-        \end{itemize}
-    \item Requirement 4.1.4.7 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S4.1.2.7.
-    \item Requirement 4.1.4.8 shall be verified using a unit test that exercises HAL functions under typical load and confirms CPU usage does not exceed 25\% of the total CPU time allocated to the onboard software system. 
-        This will be verified through profiling tools such as \texttt{perf} or \texttt{htop}. The test will include the following scenarios:
-        \begin{itemize}
-            \item Baseline HAL operations with minimal concurrent activity.
-            \item HAL operations during peak module execution.
-            \item Sustained HAL usage over extended operation periods.
-            \item Profiling of individual HAL function CPU overhead.
-        \end{itemize}
-    \item The accuracy of the HAL will be verified by unit tests that measure the setup, and response of all associated pins and interfaces. The HAL shall have at least
-        90\% code coverage as measured by a code coverage tool such as \texttt{gcov} or \texttt{lcov}.
+    \item Verif 1
 \end{enumerate}
+
+
+\subsubsection{Software Requirements}
+\subitem{
+    % Verification of Software requirements.
+}
+\begin{enumerate}
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with GPIO pins as defined by the hardware platform.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with I$^2$C devices as defined in UM10204 from NXP Semiconductors.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with SPI devices as defined by the hardware platform.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with UART devices as defined by the hardware platform.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with USB 2.0 devices as defined in the USB 2.0 Specification from USB-IF.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with CAN devices as defined in ISO 11898-1:2015 from ISO.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with micro SD cards as defined in the SD Physical Layer Simplified Specification v6.00 from the SD Association.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with ADC channels as defined by the hardware platform.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with any on-chip hardware timers as defined by the hardware platform.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of configuring and handling interrupts as defined by the hardware platform.
+    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with any device using the provided hardware interfaces when an appropriate driver is provided.
+    \item Requirement shall be verified by reviewing the ICD and verifying it outlines the APIs utilized for all functionality described in the preceding requirements.
+    \item Requirement shall be verified using static analysis tools such as linters and formatters to verify all C code adheres to the BARR-C:2018 Embedded C Coding Standard and CERT C Secure Coding Standard.
+    \item Requirement shall be verified using static analysis tools such as linters and formatters to verify all C++ code adheres to the C++ Core Guidelines and CERT C++ Secure Coding Standard.
+    \item Requirement shall be verified using static analysis tools such as linters and formatters to verify all Assembly code adheres to the coding standards defined by the hardware platform manufacturer.
+    \item Requirement shall be verified by reviewing the coding standards documentation for all other programming languages used and verifying they are appropriate for the language and application.
+    \item Requirement shall be verified by reviewing the code and documentation to verify all code performing real-time operations adheres to the POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable.
+    \item Requirement shall be verified by reviewing the documentation to verify all deviations from any defined standard are documented and justified.
+\end{enumerate}
+
 
 \subsubsection{Power Management}
 \subitem{

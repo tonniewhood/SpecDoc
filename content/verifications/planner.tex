@@ -4,27 +4,17 @@
 \subitem{
     % Verification of all Planner requirements.
 }
+
+\subsubsection{General Requirements}
+\subitem{
+    % Verification of Planner general requirements.
+}
 \begin{enumerate}
-    \item Requirement 4.2.2.1 shall be verified using the integration test outlined in \S5.2.1.1 verifying that the CPU load does not exceed to allocated 20\% budget via a profiling tool like \texttt{perf} or \texttt{htop}.
-    \item Requirement 4.2.2.2 shall be verified using the integration tests outlined in \S5.2.1.1 and \S5.2.2.1 and verifying that the output desired states do not exceed the tolerances as described in \S4.2.2.2.
-    \item Requirement 4.2.2.3 shall be verified by using an integration test that inputs a set of waypoints, and ensures that valid inputs are accurately read, and invalid inputs are rejected and
-        consistent outputs are maintained. The tests will include the following cases:
-        \begin{itemize}
-            \item Valid waypoints and RC commands.
-            \item Malformed waypoints, but valid RC commands.
-            \item Valid waypoints, but malformed RC commands.
-            \item Malformed waypoints and malformed RC commands.
-        \end{itemize}
-    \item Requirement 4.2.2.4 shall be verified using an integration test that inputs a series of waypoints and RC commands and verifies all faults or adjustments are logged correctly.
-        The test will include the following cases:
-        \begin{itemize}
-            \item Valid, achievable waypoints in autonomous mode.
-            \item Valid, unachievable waypoints in autonomous mode.
-            \item Malformed waypoints in autonomous mode.
-            \item Valid, achievable RC commands in manual mode.
-            \item Valid, unachievable RC commands in manual mode.
-        \end{itemize}
-    \item Requirement 4.2.2.5 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S4.1.2.7.
+    \item Requirement 4.3.2.1 shall be verified using a software test that verifies all output states remain within the tolerances as defined in \S4.3.2.1.
+    \item Requirement 4.3.2.2 shall be verified using a software test that verifies valid inputs are accepted and invalid inputs are rejected.
+    \item Requirement 4.3.2.3 shall be verified using a software test that monitors the Planner during operation and verifies that all input and output data is logged.
+    \item Requirement 4.3.2.4 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S4.1.5.
+    \item Requirement 4.3.2.5 shall be verified using a software test tool that monitors CPU load to ensure the Planner does not exceed 20\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{Waypoint Planner}
@@ -32,20 +22,13 @@
     % Verification of Waypoint Planner requirements.
 }
 \begin{enumerate}
-    \item Requirement 4.2.3.1 shall be verified using an integration test that inputs a series of waypoints, and verifies the existance of all achievable goals in the output desired states.
-        The test will include the following cases:
-        \begin{itemize}
-            \item Straight line waypoints achievable within all tolerances.
-            \item Waypoints requiring the maximum of each tolerance to achieve.
-            \item Waypoints that cannot be achieved due to airspeed tolerance limits.
-            \item Waypoints that cannot be achieved due to climb rate tolerance limits.
-            \item Waypoints that cannot be achieved due to turn rate tolerance limits.
-            \item Waypoints that cannot be achieved due to acceleration tolerance limits.
-            \item Waypoints violating climb and descent rate tolerances, but at least 60\% of waypoints are achievable by adjusting airspeed and turn rate within tolerances.
-            \item Waypoints violating turn rate tolerances, but at least 60\% of waypoints are achievable by adjusting airspeed and climb rate within tolerances.
-            \item Waypoints violating enough tolerances such that no waypoints are achievable.
-        \end{itemize}
-    \item Requirement 4.2.3.2 shall be verified using the integration test from \S5.2.1.1 and monitoring the CPU load to ensure it does not exceed the allocated 10\% budget using profiling tools outlined in \S5.2.1.
+    \item Requirement 4.3.4.1 shall be verified by inspecting the configuration parameters and ensuring they include airframe constraints.
+    \item Requirement 4.3.3.2 shall be verified using a software test that verifies the Waypoint Planner produces valid output regardless of input validity.
+    \item Requirement 4.3.3.3 shall be verified using a software test that verifies each achievable commanded waypoint is included as a goal in the output sequence.
+    \item Requirement 4.3.3.4 shall be verified using a software test that verifies the Waypoint Planner produces outputs that minimize deviation from commanded waypoints that would violate constraints defined in \S4.3.3.1
+    \item Requirement 4.3.3.5 shall be verified using a software test that verifies all deviations from commanded waypoints are logged with reasons and timestamps.
+    \item Requirement 4.3.3.6 shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
+    \item Requirement 4.3.3.7 shall be verified using a software test tool that monitors CPU load to verify the Waypoint Planner does not exceed 10\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{RC Mixer}
@@ -53,23 +36,15 @@
     % Verification of RC Mixer requirements.
 }
 \begin{enumerate}
-    \item Requirement 4.2.4.1 shall be verified using an integration test that inputs a series of RC commands, and verifies a valid st of desird output states regardeless of input.
-        The test will include the following cases:
-        \begin{itemize}
-            \item RC commands that require no adjustments.
-            \item RC commands that require maximum adjustments.
-            \item RC commands that request more airspeed than the tolerance allows.
-            \item RC commands that request more climb rate than the tolerance allows.
-            \item RC commands that request more turn rate than the tolerance allows.
-            \item RC commands that request more acceleration than the tolerance allows.
-            \item RC commands that exceed all tolerances to verify graceful degradation.
-            \item Malformed RC commands to verify graceful degradation.
-            \item No RC commands to verify graceful degradation.
-        \end{itemize}
-    \item Requirement 4.2.4.2 shall be verifed using the integration test from \S5.2.2.1 and verifying that on the final two cases with either malformed or no RC commands, that the 
-        output desired states remain valid, and converge to horizontal flight after 2 seconds.
-    \item Requirement 4.2.4.3 shall be verified using the integration test from \S5.2.2.1 and ensuring that all inputs, outputs, adjustments, and faults are logged correctly.
-    \item Requirement 4.2.4.4 shall be verified using the integration test from \S5.2.2.1 and monitoring the CPU load to ensure it does not exceed the allocated 7.5\% budget using profiling tools outlined in \S5.2.1.
+
+    \item Requirement 4.3.4.1 shall be verified using a software test that verifies the RC Mixer receives configuration parameters defining the contents of RC data and their tolerances.
+    \item Requirement 4.3.4.2 shall be verified using a software test that verifies the RC Mixer produces goal waypoints that achieve valid RC inputs when those inputs are within tolerances defined in \S4.3.4.1.
+    \item Requirement 4.3.4.3 shall be verified using a software test that verifies the RC Mixer produces valid output regardless of input validity.
+    \item Requirement 4.3.4.4 shall be verified using a software test that verifies the RC Mixer adjusts RC inputs that violate tolerances defined in \S4.3.4.1 to bring those inputs within tolerances.
+    \item Requirement 4.3.4.5 shall be verified using a software test that verifies the RC Mixer produces goal waypoints that converge to zero climb rate and zero turn rate within 2 seconds in the absence of valid RC inputs.
+    \item Requirement 4.3.4.6 shall be verified using a software test that verifies all input adjustments made are logged with reasons and timestamps.
+    \item Requirement 4.3.4.7 shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
+    \item Requirement 4.3.4.8 shall be verified using a software test tool that monitors CPU load to verify the RC Mixer does not exceed 7.5\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{State Select}
@@ -77,15 +52,11 @@
     % Verification of State Select requirements.
 }
 \begin{enumerate}
-    \item Requirement 4.2.5.1 shall be verfied using an integration test that inputs a series of waypoints and RC commands, and verifies that there is at least some valid output desired states
-        regardless of input. The test will include the following cases:
-        \begin{itemize}
-            \item Valid waypoints and RC commands, but UAV in autonomous mode.
-            \item Valid waypoints and RC commands, but UAV in manual mode.
-            \item Malformed waypoints, in autonomous mode.
-            \item Malformed waypoints, in manual mode.
-        \end{itemize}
-    \item Requirement 4.2.5.2 shall be verified using the integration test from \S5.2.3.1 and ensuring that CPU load does not exceed the allocated 2.5\% budget using profiling tools outlined in \S5.2.1.
+    \item Requirement 4.3.5.1 shall be verified by inspecting the configuration parameters and ensuring they define the type of state mask to be used.
+    \item Requirement 4.3.5.2 shall be verified using a software test that verifies the State Select produces goal states and state masks based on the current operating mode.
+    \item Requirement 4.3.5.3 shall be verified using a software test that verifies the State Select produces valid output regardless of input validity.
+    \item Requirement 4.3.5.4 shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
+    \item Requirement 4.3.5.5 shall be verified using a software test tool that monitors CPU load to verify the State Select does not exceed 2.5\% of total CPU time.
 \end{enumerate}
 
 %%% End Planner Verification

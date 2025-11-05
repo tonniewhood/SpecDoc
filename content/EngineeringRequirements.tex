@@ -9,15 +9,15 @@
 
 % Temporary: page break before each module subsection for readability
 % % Comment out or remove these two lines when no longer needed.
-% \let\origsubsection\subsection
-% \renewcommand{\subsection}{\newpage\origsubsection}
+\let\origsubsection\subsection
+\renewcommand{\subsection}{\newpage\origsubsection}
 
 \input{content/requirements/system}
+
+\input{content/requirements/navigation}
 
 \input{content/requirements/planner}
 
 \input{content/requirements/controller}
-
-\input{content/requirements/navigation}
 
 \input{content/requirements/logger}

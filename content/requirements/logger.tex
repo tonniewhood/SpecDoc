@@ -8,29 +8,23 @@
 \subsubsection{Interfaces}
 \paragraph{Inputs}
 \begin{enumerate}
-    \item The Logger requires configuration parameters to determine where data is logged and sent, transmission rates, and data routing policies. These parameters will inclue file storage locations and transmission rates and protocols.
-    \item The Logger receives input waypoints from the Companion Computer as defined in 4.1.1.1.2.
-    \item The Logger receives desired states from the Planner as defined in 4.1.1.3.2.
-    \item The Logger receives the state mask from the Planner as defined in 4.1.1.3.3.
-    \item The Logger receives RC inputs from the Pilot as defined in 4.1.1.1.3.
-    \item The Logger receives adjustments to RC inputs from the Planner. These adjustments include trims and scaling factors of each control input.
-    \item The Logger receives raw sensor data from any onboard sensors as defined in 4.1.1.3.7 or external sensors as defined in 4.1.1.1.4.
-    \item The Logger receives state estimates from the Navigation as defined in 4.1.1.3.1.
-    \item The Logger receives raw control outputs from the Controller as defined in 4.1.1.3.5.
-    \item The Logger receives peripheral commands from the Controller as defined in 4.1.1.2.1.
-    \item The Logger receives any error reports from the Planner, Navigation, and Controller as defined in 4.1.1.3.6.
+    \item Logger configuration parameters
+    \item Logs from the Navigation submodule as defined in \S4.2.1.2.2.
+    \item Logs from the Planner submodule as defined in \S4.3.1.2.3.
+    \item Logs from the Controller submodule as defined in \S4.4.1.2.2.
 \end{enumerate}
 \paragraph{Outputs}
 \begin{enumerate}
-    \item The Logger outputs stored log files to the location defined in the configuration parameters.
-    \item The Logger outputs telemetry packets transmitted via communications link as defined in the configuration parameters.
+    \item Log files
+    \item Telemetry packets
 \end{enumerate}
 
 \subsubsection{General Requirements}
 \begin{enumerate}
-    \item The Logger shall support logging of all generated data from onboard modules.
-    \item The Logger shall support rate limiting for all logged data.
-    \item The Logger shall adhere to all coding standards defined in \S4.1.2.7.
+    \item The Logger shall support logging of all generated data from the Navigation, Planner, and Controller submodules.
+    \item The Logger configuration parameters shall contain at least a default log file location, log file format, sliding window parameters for stored logs, transmission targets and protocols, and logging rate limits.
+    \item The Logger shall support rate limiting for all logged data controled by a configuration parameter as defined in \S4.5.2.1.
+    \item The Logger shall adhere to all coding standards defined under \S4.1.5.
     \item The Logger shall use no more than 10\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
 
@@ -43,10 +37,8 @@
 }
 
 \begin{enumerate}
-    \item The Storage submodule shall have default storage location of \texttt{/logs/} on onboard non-volatile memory.
-    \item The Storage submodule shall default to storing data from each data stream in a \texttt{.log} file with timestamps for each entry.
-    \item The Storage submodule shall support configuration parameters to define custom storage locations and file formats for all logged data.
-    \item The Storage submodule shall support a sliding window of log files, based on either time duration or storage size limits defined in configuration parameters. The default shall be 4 hours and 10MB respectively.
+    \item The Storage submodule shall save all log files to a configurable directory on non-volatile memory.
+    \item The Storage submodule shall support a sliding window in which to save log files based on either time duration or storage size limits determined by the Logger configuration parameters defined in \S4.5.2.1.
     \item The Storage submodule shall implement a verification mechanism such as checksums or hashes for all stored data.
     \item The Storage submodule shall use no more than 5\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
@@ -59,7 +51,8 @@
 
 \begin{enumerate}
     \item The Transmitt submodule shall support transmission to up to three external systems simultaneously.
-    \item The Transmitt submodule shall be support both UDP and TCP transmission protocols.
+    \item The Transmitt submodule shall be support communication through UDP as defined in RFC 768 - User Datagram Protocol (UDP).
+    \item The Transmitt submodule shall be support communication through TCP as defined in RFC 9293 - Transmission Control Protocol (TCP).
     \item The Transmitt submodule shall use no more than 5\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
 
