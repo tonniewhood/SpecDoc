@@ -61,16 +61,14 @@
     Hardware interfaces provide connectivity between onboard modules and external devices.
 }
 \begin{enumerate}
-    \item The FCM shall expose pins for the following hardware interfaces: \begin{itemize}
-        \item I$^2$C
-        \item SPI
-        \item UART
-        \item USB A
-        \item 2 conductor CAN bus
-        \item Micro SD
-    \end{itemize}
+    \item The FCM shall expose pins for the I$^2$C interface.
+    \item The FCM shall expose pins for the SPI interface.
+    \item The FCM shall expose pins for the UART interface.
+    \item The FCM shall expose pins for the 2 conductor CAN bus interface.
+    \item The FCM shall expose a micro SD slot to conntect the SPI interface.
+    \item The FCM shall expose a USB A port connecting to the USB 2.0 interface.
     \item The ports for each of the specified interfaces shall be soldered onto the FCM.
-    \item The ports for each of the specified interfaces shall support a locking mechanism to secure interface connections.
+    \item The ports for each of the specified interfaces shall adhere to FAA L-823 3.3.3 Mechanical Connection specification.
 \end{enumerate}
 
 % \subsubsection{HAL}
@@ -140,10 +138,10 @@
 }
 \begin{enumerate}
     \item The FCM shall accept power via an external source at a voltage of $5V \pm 0.25V$.
-    \item The FCM shall provide a method to protect hardware in case of current higher than $5$ amps.
-    \item The FCM shall provide protection in the case of initial voltage lower than $4.75$ such that the device will not initialize.
-    \item The FCM shall monitor the power source voltage throughout operation.
-    \item The FCM shall signal to the planner in the case of a critically low voltage ($4.25V$). This way the planner can attempt to ground the UAV before catastrophic crash.
+    \item The FCM shall protect hardware in case of current higher than $5$ amps.
+    \item The FCM shall protect against initial voltage lower than $4.75$ by not allowing the device to initialize.
+    \item The FCM shall monitor the SOC throughout operation.
+    \item The FCM shall protect against a critically low voltage ($4.25V$).
 \end{enumerate}
 
 \subsubsection{Sub-Parts}
