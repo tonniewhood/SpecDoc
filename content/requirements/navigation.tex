@@ -14,7 +14,7 @@
 \paragraph{Outputs}
 \begin{enumerate}
     \item Global position, velocity, attitude, and angular velocity state estimate and uncertainty with timestamp
-    \item Logging data containing any combination of sensor selection, estimation events, and error reports.
+    \item Logging data containing any combination of sensor selection, estimation events, and error reports
 \end{enumerate}
 \paragraph{Internal}
 \begin{enumerate}
@@ -29,9 +29,9 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The sensor selector unit shall consume all available sensor feeds defined in 4.4.1.1.1
-    \item The sensor selector unit shall consume sensor selection configuration as defined in 4.4.1.1.2
-    \item The sensor selector unit shall output selected sensor feeds for the estimator as defined in 4.4.1.3.1
+    \item The sensor selector unit shall consume all available sensor feeds defined in \S4.2.1.1.1.
+    \item The sensor selector unit shall consume sensor selection configuration as defined in \S4.2.1.1.2.
+    \item The sensor selector unit shall output selected sensor feeds for the estimator as defined in \S4.2.1.3.1.
 % \textbf{Energy}
     \item The sensor selector shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
@@ -55,9 +55,9 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The estimator shall provide state estimate outputs and uncertainties as defined in 4.4.1.2.1.
-    \item The estimator shall consume selected sensor streams defined in 4.4.1.3.1.
-    \item The estimator shall comsume navigation configuration parameters as defined in 4.4.1.1.2.
+    \item The estimator shall provide state estimate outputs and uncertainties as defined in \S4.2.1.2.1.
+    \item The estimator shall consume selected sensor streams defined in \S4.2.1.3.1.
+    \item The estimator shall comsume navigation configuration parameters as defined in \S4.2.1.1.2.
     \item The estimator shall log raw sensor inputs and state estimates for diagnostics.
 % \textbf{Energy}
     \item The estimator shall not consume more than 10\% of the selected processing unit's bandwidth.
@@ -65,7 +65,7 @@
     \item The estimator shall estimate and compensate for signals with up to 20\% noise.
     \item The estimator shall estimate and correct biases in sensor measurements within 20\%.
     \item The estimator shall expose uncertainties that are accurate to 3 standad deviations.
-    \item The estimator shall use the configuration to be congnisant to sensor mounting orientations.
+    \item The estimator shall use the configuration to be congnisant to sensor mounting orientations and translate them into a common frame.
 % \textbf{Safety}
     \item The estimator shall log inconsistant inputs and anomalies.
     \item The estimator shall use timestamps to identify and drop stale data.
