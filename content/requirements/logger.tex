@@ -9,9 +9,9 @@
 \paragraph{Inputs}
 \begin{enumerate}
     \item Logger configuration parameters
-    \item Logs from the Navigation submodule as defined in \S4.2.1.2.2
-    \item Logs from the Planner submodule as defined in \S4.3.1.2.3
-    \item Logs from the Controller submodule as defined in \S4.4.1.2.2
+    \item Logs from the Navigation submodule as defined in \S3.2.1.2.2
+    \item Logs from the Planner submodule as defined in \S3.3.1.2.3
+    \item Logs from the Controller submodule as defined in \S3.4.1.2.2
 \end{enumerate}
 \paragraph{Outputs}
 \begin{enumerate}
@@ -23,8 +23,8 @@
 \begin{enumerate}
     \item The Logger shall support logging of all generated data from the Navigation, Planner, and Controller submodules.
     \item The Logger configuration parameters shall contain at least a default log file location, log file format, sliding window parameters for stored logs, transmission targets and protocols, and logging rate limits.
-    \item The Logger shall support rate limiting for all logged data controled by a configuration parameter as defined in \S4.5.2.1.
-    \item The Logger shall adhere to all coding standards defined under \S4.1.5.
+    \item The Logger shall support rate limiting for all logged data controled by a configuration parameter as defined in \S3.5.2.1.
+    \item The Logger shall adhere to all coding standards defined under \S3.1.1.7 and \S3.1.5.
     \item The Logger shall use no more than 10\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}
 
@@ -38,7 +38,7 @@
 
 \begin{enumerate}
     \item The Storage submodule shall save all log files to a configurable directory on non-volatile memory.
-    \item The Storage submodule shall support a sliding window in which to save log files based on either time duration or storage size limits determined by the Logger configuration parameters defined in \S4.5.2.1.
+    \item The Storage submodule shall support a sliding window in which to save log files based on either time duration or storage size limits determined by the Logger configuration parameters defined in \S3.5.2.1.
     \item The Storage submodule shall implement a verification mechanism such as checksums or hashes for all stored data.
     \item The Storage submodule shall use no more than 5\% of the total CPU time allocated to the onboard software system.
 \end{enumerate}

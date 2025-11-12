@@ -10,12 +10,13 @@
     % Verification of Processing requirements.
 }
 \begin{enumerate}
-    \item Requirement shall be verified by inspecting the FCM hardware and its corresponding datasheet to confirm the presence of a central processor capable of executing software instructions.
-    \item Requirement shall be verified by executing a representative software load on the processor. Profiling tools and an oscilloscope will be used to measure task execution times and ensure all deadlines within the hyperperiod are met.
-    \item Requirement shall be verified by inspecting the software design documents and source code to confirm that a Real-Time Operating System (RTOS) is implemented for task scheduling.
-    \item Requirement shall be verified by intentionally injecting faults (e.g., division by zero, null pointer access) into a non-critical task and observing that other tasks continue to operate as expected.
-    \item Requirement shall be verified by executing a test suite that includes illegal operations (e.g., memory access violations) and confirming that the system's monitoring mechanisms detect and log these faults.
-    \item  Requirement shall be verified by triggering a fault and demonstrating that the system enters a predefined failsafe state (e.g., motor shutdown, error signal) as specified in the system design.
+    \item The presence of a central processor shall be verified by inspecting the FCM hardware and datasheet.
+    \item The processor speed and hyperperiod shall be verified by executing a representative software load and measuring task execution times to confirm all deadlines within a $2.5$ ms hyperperiod are met.
+    \item The use of a real-time operating system for task scheduling shall be verified by inspecting software design documents and source code.
+    \item Task isolation shall be verified by intentionally injecting faults into a non-critical task and confirming other tasks continue to operate as expected.
+    \item Monitoring of software program state and detection of illegal operations shall be verified by executing a test suite that includes illegal operations and confirming system logs and responses.
+    \item Failsafe state activation shall be verified by triggering a fault and demonstrating the system enters a predefined failsafe state (e.g., motor shutdown, error signal).
+    \item Coding standard compliance shall be verified using static analysis tools (linters, formatters) and reviewing documentation for adherence to MISRA C:2012, CERT C, POSIX 1003.1, RTCA DO-178C, ARINC 653, and justified deviations.
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
@@ -23,11 +24,11 @@
     % Verification of Built in HW Capabilities requirements.
 }
 \begin{enumerate}
-    \item Requirement shall be verified by visual inspection of the FCM to confirm the presence of an on-board Inertial Measurement Unit (IMU).
-    \item Requirement shall be verified by visual inspection of the FCM to confirm the presence of an on-board RC receiver.
-    \item Requirement shall be verified by visual inspection of the FCM to confirm the presence of an on-board micro-SD card reader.
-    \item Requirement shall be verified by using a multimeter to measure the output of the power monitoring circuit while the input voltage is varied and comparing the measurements to the values reported by the software.
-    \item Requirement shall be verified by applying a range of input voltages and measuring the regulated output voltage to ensure it remains within its specified tolerance.
+    \item The presence of an on-board IMU shall be verified by visual inspection.
+    \item The presence of an on-board RC receiver shall be verified by visual inspection.
+    \item The presence of an on-board micro-SD card reader shall be verified by visual inspection.
+    \item On-board power monitoring shall be verified by measuring output of the power monitoring circuit and comparing to software-reported values.
+    \item On-board power regulation shall be verified by applying a range of input voltages and measuring regulated output voltage for tolerance.
 \end{enumerate}
 
 \subsubsection{HW Interfaces}
@@ -35,174 +36,69 @@
     % Verification of HW Interfaces requirements.
 }
 \begin{enumerate}
-    \item Requirement shall be verified by inspecting the FCM datasheet and the physical PCB to confirm that pins for the I$^2$C interface are exposed.
-    \item Requirement shall be verified by inspecting the FCM datasheet and the physical PCB to confirm that pins for the SPI interface are exposed.
-    \item Requirement shall be verified by inspecting the FCM datasheet and the physical PCB to confirm that pins for the UART interface are exposed.
-    \item Requirement shall be verified by inspecting the FCM datasheet and the physical PCB to confirm that pins for the 2 conductor CAN bus interface are exposed.
-    \item Requirement shall be verified by visual inspection of the FCM to confirm that a micro SD slot is present and connects to the SPI interface.
-    \item Requirement shall be verified by visual inspection of the FCM to confirm that a USB A port is present and connects to the USB 2.0 interface.
-    \item Requirement shall be verified by visual inspection of the FCM to confirm that physical ports are soldered onto the board for each interface.
-    \item Requirement shall be verified by reviewing the FCM datasheet and with a loadcell measuring the connectors to confirm they adhere to the FAA L-823 3.3.3 Mechanical Connection specification.
+    \item Pins for the I$^2$C interface shall be verified by inspecting the FCM datasheet and PCB.
+    \item Pins for the SPI interface shall be verified by inspecting the FCM datasheet and PCB.
+    \item Pins for the UART interface shall be verified by inspecting the FCM datasheet and PCB.
+    \item Pins for the CAN bus interface shall be verified by inspecting the FCM datasheet and PCB.
+    \item Micro SD slot connection to SPI interface shall be verified by visual inspection.
+    \item USB A port connection to USB 2.0 interface shall be verified by visual inspection.
+    \item Pins for at least 6 PWM channels shall be verified by visual inspection.
+    \item Soldering of ports for each interface shall be verified by physical inspection.
+    \item Mechanical connection specification compliance shall be verified by reviewing datasheet and measuring connectors for FAA L-823 3.3.3 compliance.
 \end{enumerate}
-
-% \subsubsection{HAL}
-% \subitem{
-%     % Verification of HAL requirements.
-% }
-% \begin{enumerate}
-%     \item Requirement 4.1.4.1 shall be verified by reviewing the scope and deliverables document and ensuring it details all required capabilities and resources offered by the HAL.
-%         The review will confirm the following:
-%         \begin{itemize}
-%             \item Document completeness and clarity.
-%             \item Coverage of all hardware abstraction functionalities.
-%             \item Consistency with ICD and implementation.
-%         \end{itemize}
-%     \item Requirement 4.1.4.2 shall be verified by reviewing the scope and deliverables document and confirming that it includes support for all specified functionalities.
-%         The review will include verification of the following capabilities:
-%         \begin{itemize}
-%             \item GPIO pin control.
-%             \item I2C/SPI bus management.
-%             \item UART serial communication.
-%             \item USB 2.0 serial communication.
-%             \item CAN communication.
-%             \item Micro SD card read and write support.
-%             \item ADC support.
-%             \item Timer control.
-%             \item Interrupt control.
-%             \item Generic device interfacing (with associated driver).
-%         \end{itemize}
-%     \item Requirement 4.1.4.3 shall be verified by reviewing the ICD and ensuring it outlines all APIs utilized for functionality described in the scope and deliverables document.
-%         The review will confirm:
-%         \begin{itemize}
-%             \item Completeness of API documentation for all functionalities.
-%             \item Clear function signatures and parameter descriptions.
-%             \item Consistency between ICD and implementation.
-%         \end{itemize}
-%     \item Requirement 4.1.4.4 shall be verified by reviewing the ICD and confirming that memory ownership is clearly described for all functions receiving or returning memory pointers.
-%         The review will validate:
-%         \begin{itemize}
-%             \item Explicit ownership documentation for each pointer parameter.
-%             \item Caller vs. callee responsibility specifications.
-%             \item Deallocation and lifecycle management guidelines.
-%         \end{itemize}
-%     \item Requirement 4.1.4.5 shall be verified using unit tests that call HAL functions and confirm that common status codes are returned to avoid silent failures.
-%         The tests will include the following cases:
-%         \begin{itemize}
-%             \item Valid operations returning success status codes.
-%             \item Invalid parameters returning appropriate error codes.
-%             \item Resource unavailability returning specific error codes.
-%             \item Verification that no function exits silently without returning a status code.
-%         \end{itemize}
-%     \item Requirement 4.1.4.6 shall be verified using unit tests that simulate fault conditions and verify that the HAL gracefully handles and reports faults.
-%         The tests will include the following cases:
-%         \begin{itemize}
-%             \item Hardware communication failures with proper error reporting.
-%             \item Invalid hardware states with graceful degradation.
-%             \item Timeout conditions with appropriate fault handling.
-%             \item Recovery mechanisms after transient faults.
-%         \end{itemize}
-%     \item Requirement 4.1.4.7 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined in section \S4.1.2.7.
-%     \item Requirement 4.1.4.8 shall be verified using a unit test that exercises HAL functions under typical load and confirms CPU usage does not exceed 25\% of the total CPU time allocated to the onboard software system. 
-%         This will be verified through profiling tools such as \texttt{perf} or \texttt{htop}. The test will include the following scenarios:
-%         \begin{itemize}
-%             \item Baseline HAL operations with minimal concurrent activity.
-%             \item HAL operations during peak module execution.
-%             \item Sustained HAL usage over extended operation periods.
-%             \item Profiling of individual HAL function CPU overhead.
-%         \end{itemize}
-%     \item The accuracy of the HAL will be verified by unit tests that measure the setup, and response of all associated pins and interfaces. The HAL shall have at least
-%         90\% code coverage as measured by a code coverage tool such as \texttt{gcov} or \texttt{lcov}.
-% \end{enumerate}
 
 \subsubsection{Hardware Requirements}
 \subitem{
     % Verification of Hardware requirements.
 }
 \begin{enumerate}
-    \item Requirement shall be verified by measuring the cross-sectional area of the FCM using calipers and confirming it does not exceed $412.5$ cm$^2$.
-    \item Requirement shall be verified by measuring the depth of the FCM using calipers and confirming it does not exceed $7.5$ cm.
-    \item Requirement shall be verified by weighing the FCM on a calibrated scale and confirming the mass does not exceed $500$ grams.
-    \item Requirement shall be verified via MIL-STD-810H Method 500.6 for low pressure testing procedures.
-    \item Requirement shall be verified via MIL-STD-810H Methods 501.7 and 502.7 for temperature testing procedures.
-    \item Requirement shall be verified via MIL-STD-810H Method 507.6 for humidity testing procedures.
-    \item Requirement shall be verified by mounting the FCM on a vibration table and subjecting it to vibrations up to $30$ m/s$^2$ while monitoring the onboard IMU readings and system functionality.
-    \item Requirement shall be verified by reviewing the PCB design files and manufacturing documentation to confirm adherence to IPC-2221 PCB design standard.
-    \item Requirement shall be verified by reviewing the bill of materials (BOM) and component datasheets to confirm all materials comply with the RoHS directive restrictions on hazardous substances.
-    \item Requirement shall be verified by conducting FCC Part 15 compliance testing at an accredited test facility or by reviewing FCC certification documentation for any RF-emitting modules used in the FCM design. Testing shall confirm radiated and conducted emissions remain within specified limits.
+    \item Cross-sectional area shall be verified by measuring with calipers and confirming $\leq 412.5$ cm$^2$.
+    \item Depth shall be verified by measuring with calipers and confirming $\leq 7.5$ cm.
+    \item Mass shall be verified by weighing on a calibrated scale and confirming $\leq 500$ grams.
+    \item Altitude operation shall be verified via MIL-STD-810H Method 500.6 low pressure testing.
+    \item Temperature operation shall be verified via MIL-STD-810H Methods 501.7 and 502.7.
+    \item Humidity operation shall be verified via MIL-STD-810H Method 507.6.
+    \item Vibration tolerance shall be verified by mounting on a vibration table and monitoring IMU readings and system functionality.
+    \item PCB design standard compliance shall be verified by reviewing PCB design files and documentation for IPC-2221.
+    \item RoHS compliance shall be verified by reviewing BOM and component datasheets.
+    \item FCC Part 15 compliance shall be verified by testing at an accredited facility or reviewing certification documentation for RF modules.
 \end{enumerate}
-
 
 \subsubsection{Software Requirements}
 \subitem{
     % Verification of Software requirements.
 }
 \begin{enumerate}
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with GPIO pins as defined by the hardware platform.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with I$^2$C devices as defined in UM10204 from NXP Semiconductors.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with SPI devices as defined by the hardware platform.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with UART devices as defined by the hardware platform.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with USB 2.0 devices as defined in the USB 2.0 Specification from USB-IF.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with CAN devices as defined in ISO 11898-1:2015 from ISO.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with micro SD cards as defined in the SD Physical Layer Simplified Specification v6.00 from the SD Association.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with ADC channels as defined by the hardware platform.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with any on-chip hardware timers as defined by the hardware platform.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of configuring and handling interrupts as defined by the hardware platform.
-    \item Requirement shall be verified using a software test that verifies the FCM provides a method of interfacing with any device using the provided hardware interfaces when an appropriate driver is provided.
-    \item Requirement shall be verified by reviewing the ICD and verifying it outlines the APIs utilized for all functionality described in the preceding requirements.
-    \item Requirement shall be verified using static analysis tools such as linters and formatters to verify all C code adheres to the BARR-C:2018 Embedded C Coding Standard and CERT C Secure Coding Standard.
-    \item Requirement shall be verified using static analysis tools such as linters and formatters to verify all C++ code adheres to the C++ Core Guidelines and CERT C++ Secure Coding Standard.
-    \item Requirement shall be verified using static analysis tools such as linters and formatters to verify all Assembly code adheres to the coding standards defined by the hardware platform manufacturer.
-    \item Requirement shall be verified by reviewing the coding standards documentation for all other programming languages used and verifying they are appropriate for the language and application.
-    \item Requirement shall be verified by reviewing the code and documentation to verify all code performing real-time operations adheres to the POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable.
-    \item Requirement shall be verified by reviewing the documentation to verify all deviations from any defined standard are documented and justified.
+    \item GPIO interface shall be verified using a software test as defined by the hardware platform.
+    \item I$^2$C interface shall be verified using a software test as defined in UM10204 from NXP Semiconductors.
+    \item SPI interface shall be verified using a software test as defined by the hardware platform.
+    \item UART interface shall be verified using a software test as defined by the hardware platform.
+    \item USB 2.0 interface shall be verified using a software test as defined in the USB 2.0 Specification from USB-IF.
+    \item CAN interface shall be verified using a software test as defined in ISO 11898-1:2015.
+    \item Micro SD card interface shall be verified using a software test as defined in the SD Physical Layer Simplified Specification v6.00.
+    \item ADC channel interface shall be verified using a software test as defined by the hardware platform.
+    \item Hardware timer interface shall be verified using a software test as defined by the hardware platform.
+    \item Interrupt configuration and handling shall be verified using a software test as defined by the hardware platform.
+    \item Device interface via provided hardware interfaces and drivers shall be verified using a software test.
+    \item ICD outlining APIs shall be verified by reviewing documentation.
+    \item C code compliance shall be verified using static analysis tools for BARR-C:2018 and CERT C.
+    \item C++ code compliance shall be verified using static analysis tools for C++ Core Guidelines and CERT C++.
+    \item Assembly code compliance shall be verified using static analysis tools for manufacturer coding standards.
+    \item Coding standards for other languages shall be verified by reviewing documentation for appropriateness.
+    \item Real-time code compliance shall be verified by reviewing code and documentation for POSIX 1003.1, RTCA DO-178C, and ARINC 653.
+    \item Documentation and justification of deviations shall be verified by reviewing the Software Design Document.
 \end{enumerate}
-
 
 \subsubsection{Power Management}
 \subitem{
     % Verification of Power Management requirements.
 }
 \begin{enumerate}
-    \item Requirement shall be verified by connecting a variable DC power supply to the FCM's power input. The voltage shall be varied from 4.75V to 5.25V, and the system's operational status will be monitored to confirm it functions correctly throughout this range.
-    \item Requirement shall be verified by connecting an adjustable electronic load to the FCM. The current draw shall be slowly increased above 5 amps to confirm that the onboard protection mechanism (e.g., fuse or circuit breaker) activates and interrupts power to protect the hardware.
-    \item Requirement shall be verified by setting a power supply to a voltage below 4.75V and attempting to power on the device. It will be confirmed that the FCM does not initialize. The voltage will then be raised above 4.75V to confirm the device initializes correctly.
-    \item Requirement shall be verified by connecting a variable power supply and a multimeter to the FCM's power input. The input voltage will be varied, and the voltage reported by the FCM's software will be compared against the multimeter reading to ensure accuracy.
-    \item Requirement shall be verified by lowering the input voltage to 4.25V. It will be demonstrated through software logs or a debug interface that a signal is sent to the planner, and the planner initiates its low-voltage response protocol.
+    \item Power input voltage range shall be verified by connecting a variable DC power supply and monitoring operational status from $4.75V$ to $5.25V$.
+    \item Overcurrent protection shall be verified by increasing current above $5$ amps and confirming activation of protection mechanisms.
+    \item Low voltage initialization protection shall be verified by setting power supply below $4.75V$ and confirming device does not initialize, then raising voltage to confirm correct initialization.
+    \item SOC monitoring shall be verified by varying input voltage and comparing software-reported voltage to multimeter readings.
+    \item Critically low voltage protection shall be verified by lowering input voltage to $4.25V$ and confirming the planner initiates its low-voltage response protocol.
 \end{enumerate}
-
-
-% \subsubsection{Functional Requirements}
-% \begin{enumerate}
-%     \item Verify provision of computational, hardware, and interface resources for all modules.
-% \end{enumerate}
-% \paragraph{Submodules}
-% \begin{enumerate}
-%     \item Verify Processing Core
-%     \item Verify Processing Architecture
-%     \item Verify Hardware Platform
-%     \item Verify Configuration Tool
-% \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Verify energy requirements.
-% \end{enumerate}
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Verify environment requirements.
-% \end{enumerate}
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Verify safety requirements.
-% \end{enumerate}
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Verify structure requirements.
-% \end{enumerate}
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Verify standards and regulations requirements.
-% \end{enumerate}
 
 %%% End System Verification
