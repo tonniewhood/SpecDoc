@@ -1,7 +1,7 @@
 \subsection{System Requirements}
 
 \subitem{
-    The System provides the hardware and software foundation for all onboard modules. It includes processing, hardware capabilities, interfaces, hardware abstraction, and power management. The System is comprised of seven main parts: Processing, Built-in HW Capabilities, HW Interfaces, Hardware Requirements, Software Requirements, Power Management, and Fsunctional Sub-Parts.
+    The System provides the hardware and software foundation for all onboard modules. It includes processing, hardware capabilities, interfaces, hardware abstraction, and power management. The System is comprised of seven main parts: Processing, Built-in HW Capabilities, HW Interfaces, Hardware Requirements, Software Requirements, Power Management, and Functional Sub-Parts.
 }
 
 \subsubsection{Processing}
@@ -11,12 +11,9 @@
 \begin{enumerate}
     \item The FCM shall provide a central processor to execute software instructions.
     \item The central processor of the FCM shall support a processing speed such that the hyperperiod of all of the tasks is $2.5$ ms($400$ Hz).
-    \item The central processor of the FCM shall employ a real-time operating system to handle task scheduling.
     \item The central processor of the FCM shall support task isolation, such that a crash on one task does not cause failure of another task.
     \item The central processor of the FCM shall monitor the software program state in order to catch illegal operations.
     \item The central processor of the FCM shall provide a failsafe state to provide graceful failure upon catching such faults.
-    \item All code running on the FCM shall adhere to the MISRA C:2012 C coding standard and CERT C Secure Coding Standard or equivalent standards for other programming languages used. All code shall adhere to the
-        POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable. Any deviations should be documented and justified in the Software Design Document.
 \end{enumerate}
 
 \subsubsection{Built in HW Capabilities}
@@ -40,9 +37,9 @@
     \item The FCM shall expose pins for the SPI interface.
     \item The FCM shall expose pins for the UART interface.
     \item The FCM shall expose pins for the 2 conductor CAN bus interface.
-    \item The FCM shall expose a micro SD slot to conntect the SPI interface.
+    \item The FCM shall expose a micro SD slot to connect the SPI interface.
     \item The FCM shall expose a USB A port connecting to the USB 2.0 interface.
-    \item The FCM shall expose pins for at least 6 PWM channels.
+    \item The FCM shall expose pins for 6 PWM channels.
     \item The ports for each of the specified interfaces shall be soldered onto the FCM.
     \item The ports for each of the specified interfaces shall adhere to FAA L-823 3.3.3 Mechanical Connection specification.
 \end{enumerate}
@@ -55,13 +52,17 @@
     \item The FCM shall have a cross-sectional area less than or equal to $412.5$ cm$^2$.
     \item The FCM shall have a depth less than or equal to $7.5$ cm.
     \item The FCM shall have a mass less than or equal to $500$ grams.
-    \item The FCM shall operate at altitudes up to $100$ m above ground level (AGL).
+    \item The FCM shall operate at altitudes up to $100$ m AGL.
     \item The FCM shall operate in ambient temperatures from $-20^\circ$C to $70^\circ$C.
     \item The FCM shall operate in ambient humidity between $10\%$ and $90\%$.
     \item The FCM shall tolerate vibrations up to $30$ m/s$^2$ as measured by the onboard IMU.
     \item The FCM PCB shall adhere to IPC-2221 pcb design standard.
+    \item The FCM shall have an IP rating of IP43 as defined by IEC 60529.
     \item The FCM shall comply with the RoHS directive for hazardous materials.
-    \item The FCM shall comply with part 15 of the FCC rules.
+    \item All FCM components and communications shall comply with the standards outlined in FCC 47 CFR Part 15 - Radio Frequency Devices.
+    \item All FCM components and communications shall comply with the standards outlined in FCC 47 CFR Part 97 - Amateur Radio Service.
+    \item The FCM shall provide a way to identify the UAV as outlined in FAA 14 CFR Part 89 - Remote Identification of Unmanned Aircraft.
+    \item The FCM shall ensure that UAV operations comply with FAA 14 CFR Part 107 - Small Unmanned Aircraft Systems.
 \end{enumerate}
 
 \subsubsection{Software Requirements}

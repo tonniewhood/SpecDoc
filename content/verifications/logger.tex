@@ -10,12 +10,12 @@
     % Verification of Logger general requirements.
 }
 \begin{enumerate}
-    \item Requirement 3.5.2.1 shall be verified using a software test that configures the Logger to receive all data streams from the Planner, Controller, and Navigation modules with default configuration and verifies that all data is successfully logged to storage and transmitted.
-    \item Requirement 3.5.2.1 shall be verified using a software test that configures the Logger to receive selected data streams with custom configuration and verifies that the selected data is successfully logged to storage and/or transmitted.
-    \item Requirement 3.5.2.2 shall be verified using a software test that verifies that the Logger can receive a custom data storage directory, and that logs are saved there.
-    \item Requirement 3.5.2.2 shall be verified using a software test that configures the Logger to rate limit and verifies that the actual logging rate does not exceed 1\% above the configured limit.
-    \item Requirement 3.5.2.3 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.1.7 and \S3.1.5.
-    \item Requirement 3.5.2.4 shall be verified using a software test tool that monitors CPU load to ensure the Logger does not exceed 10\% of total CPU time.
+    \item The Logger shall be verified using a software test that configures the Logger to receive all data streams from the Planner, Controller, and Navigation modules with default configuration and verifies that all data is successfully logged to storage and transmitted.
+    \item The Logger shall be verified using a software test that configures the Logger to receive selected data streams with custom configuration and verifies that the selected data is successfully logged to storage and/or transmitted.
+    \item The Logger shall be verified using a software test that verifies that the Logger can receive a custom data storage directory, and that logs are saved there.
+    \item The Logger shall be verified using a software test that configures the Logger to rate limit and verifies that the actual logging rate does not exceed 1\% above the configured limit.
+    \item The Logger shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.1.7 and \S3.1.5.
+    \item The Logger shall be verified using a software test tool that monitors CPU load to ensure the Logger does not exceed 10\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{Storage}
@@ -23,11 +23,11 @@
     % Verification of Storage requirements.
 }
 \begin{enumerate}
-    \item Requirement 3.5.3.1 shall be verified using a software test that confirms log files are saved to a specified directory on non-volatile memory.
-    \item Requirement 3.5.3.2 shall be verified using a software test that verifies data is properly decimated or dropped when rates exceed configured limits.
-    \item Requirement 3.5.3.2 shall be verified by inspecting the stored log file for the pressence of data verification codes for all logs.
-    \item Requirement 3.5.3.2 shall be verified by a software test that induces data corruption in stored log files and verifies that the Storage submodule detects the corruption using the designed data verification method.
-    \item Requirement 3.5.3.3 shall be verified using a software test tool that monitors CPU load to ensure the Storage submodule does not exceed the allocated 5\% budget.
+    \item The Storage submodule shall be verified using a software test that confirms log files are saved to a specified directory on non-volatile memory.
+    \item The Storage submodule shall be verified using a software test that verifies data is properly decimated or dropped when rates exceed configured limits.
+    \item The Storage submodule shall be verified by inspecting the stored log file for the pressence of data verification codes for all logs.
+    \item The Storage submodule shall be verified by a software test that induces data corruption in stored log files and verifies that the Storage submodule detects the corruption using the designed data verification method.
+    \item The Storage submodule shall be verified using a software test tool that monitors CPU load to ensure the Storage submodule does not exceed the allocated 5\% budget.
 \end{enumerate}
 
 \subsubsection{Transmitt}
@@ -35,10 +35,10 @@
     % Verification of Transmitt requirements.
 }
 \begin{enumerate}
-    \item Requirement 3.5.4.1 shall be verified using a software test that configures the Transmitt submodule to transmit telemetry to three external systems with different IP addresses simultaneously and verifies that all systems receive the expected data.
-    \item Requirement 3.5.4.2 shall be verified using a software test that configures the Transmitt submodule to use the UDP protocol for transmission and transmits data to a test server, verifying that packets are received with no greater than 5\% packet loss.
-    \item Requirement 3.5.4.2 shall be verified using a software test that configures the Transmitt submodule to use the TCP protocol for transmission and transmits data to a test server, verifying all packets are received in order and without loss.
-    \item Requirement 3.5.4.3 shall be verified using a software test tool that monitors CPU load to ensure the Transmitt submodule does not exceed the allocated 5\% budget.
+    \item The Transmitt submodule shall be verified using a software test that configures the Transmitt submodule to transmit telemetry to three external systems with different IP addresses simultaneously and verifies that all systems receive the expected data.
+    \item The Transmitt submodule shall be verified using a software test that configures the Transmitt submodule to use the UDP protocol for transmission and transmits data to a test server, verifying that packets are received with no greater than 5\% packet loss.
+    \item The Transmitt submodule shall be verified using a software test that configures the Transmitt submodule to use the TCP protocol for transmission and transmits data to a test server, verifying all packets are received in order and without loss.
+    \item The Transmitt submodule shall be verified using a software test tool that monitors CPU load to ensure the Transmitt submodule does not exceed the allocated 5\% budget.
 \end{enumerate}
 
 %%% End Logger Verification

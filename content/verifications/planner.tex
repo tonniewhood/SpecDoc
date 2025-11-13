@@ -10,16 +10,16 @@
     % Verification of Planner general requirements.
 }
 \begin{enumerate}
-    \item Requirement 3.3.2.1 shall be verified by inspection all tolerances are consumed from configured values as defined in \S3.3.2.1.
-    \item Requirement 3.3.2.2 shall be verified by a software test that verifies all output states conform to the airspeed tolerance defined in \S3.3.2.2.
-    \item Requirement 3.3.2.3 shall be verified by a software test that verifies all output states conform to the bank angle tolerance defined in \S3.3.2.3.
-    \item Requirement 3.3.2.4 shall be verified by a software test that verifies all output states conform to the vertical speed tolerance defined in \S3.3.2.4.
-    \item Requirement 3.3.2.5 shall be verified by a software test that verifies all output states conform to the turn rate tolerance defined in \S3.3.2.5.
-    \item Requirement 3.3.2.6 shall be verified by a software test that verifies all output states conform to the load factor tolerance defined in \S3.3.2.6.   
-    \item Requirement 3.3.2.7 shall be verified using a software test that verifies valid inputs are accepted and invalid inputs are rejected.
-    \item Requirement 3.3.2.8 shall be verified using a software test that monitors the Planner during operation and verifies that all input and output data is logged.
-    \item Requirement 3.3.2.9 shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.1.7 and \S3.1.5.
-    \item Requirement 3.3.2.10 shall be verified using a software test tool that monitors CPU load to ensure the Planner does not exceed 20\% of total CPU time.
+    \item The Planner shall be verified by inspection all tolerances are consumed from configured values as defined in \S3.3.2.1.
+    \item The Planner shall be verified by a software test that verifies all output states conform to the airspeed tolerance defined in \S3.3.2.2.
+    \item The Planner shall be verified by a software test that verifies all output states conform to the bank angle tolerance defined in \S3.3.2.3.
+    \item The Planner shall be verified by a software test that verifies all output states conform to the vertical speed tolerance defined in \S3.3.2.4.
+    \item The Planner shall be verified by a software test that verifies all output states conform to the turn rate tolerance defined in \S3.3.2.5.
+    \item The Planner shall be verified by a software test that verifies all output states conform to the load factor tolerance defined in \S3.3.2.6.   
+    \item The Planner shall be verified using a software test that verifies valid inputs are accepted and invalid inputs are rejected.
+    \item The Planner shall be verified using a software test that monitors the Planner during operation and verifies that all input and output data is logged.
+    \item The Planner shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.1.7 and \S3.1.5.
+    \item The Planner shall be verified using a software test tool that monitors CPU load to ensure the Planner does not exceed 20\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{Waypoint Planner}
@@ -27,13 +27,13 @@
     % Verification of Waypoint Planner requirements.
 }
 \begin{enumerate}
-    \item Requirement 3.3.4.1 shall be verified by inspecting the configuration parameters and ensuring they include airframe constraints.
-    \item Requirement 3.3.3.2 shall be verified using a software test that verifies the Waypoint Planner produces valid output regardless of input validity.
-    \item Requirement 3.3.3.3 shall be verified using a software test that verifies each achievable commanded waypoint is included as a goal in the output sequence.
-    \item Requirement 3.3.3.4 shall be verified using a software test that verifies the Waypoint Planner produces outputs that minimize deviation from commanded waypoints that would violate constraints defined in \S3.3.3.1
-    \item Requirement 3.3.3.5 shall be verified using a software test that verifies all deviations from commanded waypoints are logged with reasons and timestamps.
-    \item Requirement 3.3.3.6 shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
-    \item Requirement 3.3.3.7 shall be verified using a software test tool that monitors CPU load to verify the Waypoint Planner does not exceed 10\% of total CPU time.
+    \item The Waypoint Planner shall be verified by inspecting the configuration parameters and ensuring they include airframe constraints.
+    \item The Waypoint Planner shall be verified using a software test that verifies the Waypoint Planner produces valid output regardless of input validity.
+    \item The Waypoint Planner shall be verified using a software test that verifies each achievable commanded waypoint is included as a goal in the output sequence.
+    \item The Waypoint Planner shall be verified using a software test that verifies the Waypoint Planner produces outputs that minimize deviation from commanded waypoints that would violate constraints defined in \S3.3.3.1
+    \item The Waypoint Planner shall be verified using a software test that verifies all deviations from commanded waypoints are logged with reasons and timestamps.
+    \item The Waypoint Planner shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
+    \item The Waypoint Planner shall be verified using a software test tool that monitors CPU load to verify the Waypoint Planner does not exceed 10\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{RC Mixer}
@@ -42,14 +42,14 @@
 }
 \begin{enumerate}
 
-    \item Requirement 3.3.4.1 shall be verified using a software test that verifies the RC Mixer receives configuration parameters defining the contents of RC data and their tolerances.
-    \item Requirement 3.3.4.2 shall be verified using a software test that verifies the RC Mixer produces goal waypoints that achieve valid RC inputs when those inputs are within tolerances defined in \S3.3.4.1.
-    \item Requirement 3.3.4.3 shall be verified using a software test that verifies the RC Mixer produces valid output regardless of input validity.
-    \item Requirement 3.3.4.4 shall be verified using a software test that verifies the RC Mixer adjusts RC inputs that violate tolerances defined in \S3.3.4.1 to bring those inputs within tolerances.
-    \item Requirement 3.3.4.5 shall be verified using a software test that verifies the RC Mixer produces goal waypoints that converge to zero climb rate and zero turn rate within 2 seconds in the absence of valid RC inputs.
-    \item Requirement 3.3.4.6 shall be verified using a software test that verifies all input adjustments made are logged with reasons and timestamps.
-    \item Requirement 3.3.4.7 shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
-    \item Requirement 3.3.4.8 shall be verified using a software test tool that monitors CPU load to verify the RC Mixer does not exceed 7.5\% of total CPU time.
+    \item The RC Mixer shall be verified using a software test that verifies the RC Mixer receives configuration parameters defining the contents of RC data and their tolerances.
+    \item The RC Mixer shall be verified using a software test that verifies the RC Mixer produces goal waypoints that achieve valid RC inputs when those inputs are within tolerances defined in \S3.3.4.1.
+    \item The RC Mixer shall be verified using a software test that verifies the RC Mixer produces valid output regardless of input validity.
+    \item The RC Mixer shall be verified using a software test that verifies the RC Mixer adjusts RC inputs that violate tolerances defined in \S3.3.4.1 to bring those inputs within tolerances.
+    \item The RC Mixer shall be verified using a software test that verifies the RC Mixer produces goal waypoints that converge to zero climb rate and zero turn rate within 2 seconds in the absence of valid RC inputs.
+    \item The RC Mixer shall be verified using a software test that verifies all input adjustments made are logged with reasons and timestamps.
+    \item The RC Mixer shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
+    \item The RC Mixer shall be verified using a software test tool that monitors CPU load to verify the RC Mixer does not exceed 7.5\% of total CPU time.
 \end{enumerate}
 
 \subsubsection{State Select}
@@ -57,11 +57,11 @@
     % Verification of State Select requirements.
 }
 \begin{enumerate}
-    \item Requirement 3.3.5.1 shall be verified by inspecting the configuration parameters and ensuring they define the type of state mask to be used.
-    \item Requirement 3.3.5.2 shall be verified using a software test that verifies the State Select produces goal states and state masks based on the current operating mode.
-    \item Requirement 3.3.5.3 shall be verified using a software test that verifies the State Select produces valid output regardless of input validity.
-    \item Requirement 3.3.5.4 shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
-    \item Requirement 3.3.5.5 shall be verified using a software test tool that monitors CPU load to verify the State Select does not exceed 2.5\% of total CPU time.
+    \item The State Select shall be verified by inspecting the configuration parameters and ensuring they define the type of state mask to be used.
+    \item The State Select shall be verified using a software test that verifies the State Select produces goal states and state masks based on the current operating mode.
+    \item The State Select shall be verified using a software test that verifies the State Select produces valid output regardless of input validity.
+    \item The State Select shall be verified using a software test that verifies all detected faults are logged with reasons and timestamps.
+    \item The State Select shall be verified using a software test tool that monitors CPU load to verify the State Select does not exceed 2.5\% of total CPU time.
 \end{enumerate}
 
 %%% End Planner Verification
