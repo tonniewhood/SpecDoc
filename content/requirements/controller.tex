@@ -12,9 +12,9 @@
 \subsubsection{Interfaces}
 \paragraph{Inputs}
 \begin{enumerate}
-    \item Planned goal state defined in \S4.3.1.2.1
-    \item State mask as defined in \S4.3.1.2.1
-    \item State estimates defined in \S4.2.1.2.1
+    \item Planned goal state defined in \S3.3.1.2.1
+    \item State mask as defined in \S3.3.1.2.1
+    \item State estimates defined in \S3.2.1.2.1
     \item Controller configuration parameters
 \end{enumerate}
 \paragraph{Outputs}
@@ -39,15 +39,15 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The preprocessor shall consume planned goal states as defined in \S4.4.1.1.1.
-    \item The preprocessor shall consume state estimates as defined in \S4.4.1.1.3.
-    \item The preprocessor shall output processed state and setpoints for the PVA controller as defined in \S4.4.1.3.1.
-    \item The preprocessor shall output processed attitude and throttle state and setpoints for the ATL controller as defined in \S4.4.1.3.2.
-    \item The preprocessor shall consume controller configuration parameters as defined in \S4.4.1.1.4.
+    \item The preprocessor shall consume planned goal states as defined in \S3.4.1.1.1.
+    \item The preprocessor shall consume state estimates as defined in \S3.4.1.1.3.
+    \item The preprocessor shall output processed state and setpoints for the PVA controller as defined in \S3.4.1.3.1.
+    \item The preprocessor shall output processed attitude and throttle state and setpoints for the ATL controller as defined in \S3.4.1.3.2.
+    \item The preprocessor shall consume controller configuration parameters as defined in \S3.4.1.1.4.
 % \textbf{Energy}
     \item The preprocessor shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item The preprocessor shall be functional agnostic to the UAV environment.
+    \item The preprocessor shall function agnostic to the UAV environment.
     \item The preprocessor shall apply saturation and rate limits to setpoints determined by the controller configuration and UAV state.
 % \textbf{Safety}
     \item The preprocessor shall log invalid or out-of-bounds inputs for diagnostics.
@@ -58,7 +58,7 @@
     \item The preprocessor shall output the exact state it receives unless zeroing for disabled setpoints.
     \item The preprocessor shall output the exact setpoints it receives modified only by slewing unless zeroing for disabled setpoints.
 % \textbf{Standards and Regulations}
-    % \item Follow applicable software development standards.
+    \item The preprocessor shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{PVA Controller}
@@ -69,9 +69,9 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The PVA controller shall consume setpoints and state estimates as defined in \S4.4.1.3.1.
-    \item The PVA controller shall output desired attitude and torque targets as defined in \S4.4.1.3.3.
-    \item The PVA controller shall consume controller configuration parameters as defined in \S4.4.1.1.4.
+    \item The PVA controller shall consume setpoints and state estimates as defined in \S3.4.1.3.1.
+    \item The PVA controller shall output desired attitude and torque targets as defined in \S3.4.1.3.3.
+    \item The PVA controller shall consume controller configuration parameters as defined in \S3.4.1.1.4.
 % \textbf{Energy}
     \item The PVA controller shall not consume more than 10\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
@@ -85,7 +85,7 @@
 % \textbf{Structure}
     \item The PVA controller shall expose setpoints for position, velocity, and acceleration in three dimensions.
 % \textbf{Standards and Regulations}
-    % \item Follow applicable software development standards.
+    \item The PVA controller shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{ATL Controller}
@@ -96,10 +96,10 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The ATL controller shall consume setpoints and state estimates as defined in \S4.4.1.3.2.
-    \item The ATL controller shall consume setpoints as defined in \S4.4.1.3.3.
-    \item The ATL controller shall output low-level intermediary actuator commands as defined in \S4.4.1.3.4.
-    \item The PVA controller shall consume controller configuration parameters as defined in \S4.4.1.1.4.
+    \item The ATL controller shall consume setpoints and state estimates as defined in \S3.4.1.3.2.
+    \item The ATL controller shall consume setpoints as defined in \S3.4.1.3.3.
+    \item The ATL controller shall output low-level intermediary actuator commands as defined in \S3.4.1.3.4.
+    \item The PVA controller shall consume controller configuration parameters as defined in \S3.4.1.1.4.
 % \textbf{Energy}
     \item The ATL controller shall not consume more than 10\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
@@ -114,7 +114,7 @@
     \item The ATL controller shall expose setpoints for attitude and angular velocity in three dimensions.
     \item The ATL controller shall expose throttle setpoints independent of attitude and angular velocity.
 % \textbf{Standards and Regulations}
-    % \item Follow applicable software development standards.
+    \item The ATL controller shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{Control Distributor}
@@ -125,13 +125,13 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The control distributor shall consume low-level intermediary actuator commands as defined in \S4.4.1.3.4.
-    \item The control distributor shall output hardware actuator signals as defined in \S4.4.1.2.1.
-    \item The control distributor shall consume controller configuration parameters as defined in \S4.4.1.1.4.
+    \item The control distributor shall consume low-level intermediary actuator commands as defined in \S3.4.1.3.4.
+    \item The control distributor shall output hardware actuator signals as defined in \S3.4.1.2.1.
+    \item The control distributor shall consume controller configuration parameters as defined in \S3.4.1.1.4.
 % \textbf{Energy}
     \item The control distributor shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item The control distributor shall be functional agnostic to the UAV environment.
+    \item The control distributor shall function agnostic to the UAV environment.
     \item The control distributor shall detect and handle hardware failures gracefully.
     \item The control distributor shall support testing the configured output map while not in flight.
 % \textbf{Safety}
@@ -142,40 +142,7 @@
 % \textbf{Structure}
     \item The control distributor shall map logical control channels to physical hardware outputs based on configuration.
 % \textbf{Standards and Regulations}
-    % \item Follow applicable software development standards.
+    \item The control distributor shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
-
-% \subsubsection{Functional Requirements}
-%     \begin{enumerate}
-%         \item Compute actuator setpoints from planned trajectories and state estimates.
-%         \item Implement required control algorithms and scheduling.
-%     \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Execute within the control loop CPU and power budgets.
-% \end{enumerate}
-
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Maintain stability across environmental conditions and sensor noise.
-% \end{enumerate}
-
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Ensure bounded outputs and safe behavior under saturation and faults.
-% \end{enumerate}
-
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Modular controller design with clear scheduling and interfaces.
-% \end{enumerate}
-
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Follow applicable control and software standards.
-% \end{enumerate}
 
 %%% End Controller

@@ -25,7 +25,7 @@
 % \textbf{Structure}
     \item The Preprocessor shall be verified by reviewing diagnostic logs to confirm that all detected input faults and mode transitions are accurately recorded.
 % \textbf{Standards and Regulations}
-    % \item The Preprocessor shall be verified by reviewing implementation artifacts and test records for compliance with required control software standards.
+    \item The Preprocessor shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{PVA Controller}
@@ -50,7 +50,7 @@
 % \textbf{Structure}
     \item The PVA Controller shall be verified by confirming that position, velocity, and acceleration setpoints are generated in all three axes and correctly propagated to dependent modules.
 % \textbf{Standards and Regulations}
-    % \item The PVA Controller shall be verified by reviewing test coverage and control law documentation for conformity with applicable control standards.
+    \item The PVA Controller shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{ATL Controller}
@@ -75,7 +75,7 @@
 % \textbf{Structure}
     \item The ATL Controller shall be verified by confirming that attitude and angular velocity setpoints are generated in all three axes, and throttle setpoints are independent of attitude and angular velocity.
 % \textbf{Standards and Regulations}
-    % \item The ATL Controller shall be verified by ensuring test results meet control design quality and documentation requirements for software verification.
+    \item The ATL Controller shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{Control Distributor}
@@ -100,7 +100,7 @@
 % \textbf{Structure}
     \item The Control Distributor shall be verified by cross-checking logical-to-physical channel mapping with configuration tables for correctness.
 % \textbf{Standards and Regulations}
-    % \item The Control Distributor shall be verified by confirming module behavior adheres to relevant control distribution and safety software standards.
+    \item The Control Distributor shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.5.
 \end{enumerate}
 
 %%% End Controller Verification

@@ -29,13 +29,13 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The sensor selector unit shall consume all available sensor feeds defined in \S4.2.1.1.1.
-    \item The sensor selector unit shall consume sensor selection configuration as defined in \S4.2.1.1.2.
-    \item The sensor selector unit shall output selected sensor feeds for the estimator as defined in \S4.2.1.3.1.
+    \item The sensor selector unit shall consume all available sensor feeds defined in \S3.2.1.1.1.
+    \item The sensor selector unit shall consume sensor selection configuration as defined in \S3.2.1.1.2.
+    \item The sensor selector unit shall output selected sensor feeds for the estimator as defined in \S3.2.1.3.1.
 % \textbf{Energy}
     \item The sensor selector shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item The sensor selector shall be functional agnostic to the UAV environment.
+    \item The sensor selector shall function agnostic to the UAV environment.
 % \textbf{Safety}
     \item The sensor selector shall expose safe fallbacks sensors if available when preferred sensors are unavailable.
     \item The sensor selector shall use health indicators to avoid selecting faulty sensors.
@@ -44,7 +44,7 @@
     \item The sensor selector shall expose priority and fallback choices for sensors based on configuration.
     \item The sensor selector shall only execute upon reception of new sensor data.
 % \textbf{Standards and Regulations}
-    % \item Follow applicable software development standards.
+    \item The sensor selector shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{Estimator}
@@ -55,9 +55,9 @@
 
 \begin{enumerate}
 % \paragraph{Functional Requirements}
-    \item The estimator shall provide state estimate outputs and uncertainties as defined in \S4.2.1.2.1.
-    \item The estimator shall consume selected sensor streams defined in \S4.2.1.3.1.
-    \item The estimator shall comsume navigation configuration parameters as defined in \S4.2.1.1.2.
+    \item The estimator shall provide state estimate outputs and uncertainties as defined in \S3.2.1.2.1.
+    \item The estimator shall consume selected sensor streams defined in \S3.2.1.3.1.
+    \item The estimator shall comsume navigation configuration parameters as defined in \S3.2.1.1.2.
     \item The estimator shall log raw sensor inputs and state estimates for diagnostics.
 % \textbf{Energy}
     \item The estimator shall not consume more than 10\% of the selected processing unit's bandwidth.
@@ -74,34 +74,7 @@
     \item The estimator shall provide a common interface for inputs of various measurement types.
     \item The estimator shall expose interfaces with data that adheres to at most one body frame coordinate system and one inertial frame coordinate system.
 % \textbf{Standards and Regulations}
-    % \item Follow applicable software development standards.
+    \item The estimator shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
-
-% \subsubsection{Functional Requirements}
-%     \begin{enumerate}
-%         \item Provide timely, bounded-uncertainty state estimates.
-%     \end{enumerate}
-
-% \subsubsection{Non-Functional Requirements}
-% \textbf{Energy}
-% \begin{enumerate}
-%     \item Complete estimation within allocated compute budget.
-% \end{enumerate}
-% \textbf{Environments}
-% \begin{enumerate}
-%     \item Maintain accuracy across sensor noise and environmental changes.
-% \end{enumerate}
-% \textbf{Safety}
-% \begin{enumerate}
-%     \item Provide validity flags and fail-safe estimates upon degraded inputs.
-% \end{enumerate}
-% \textbf{Structure}
-% \begin{enumerate}
-%     \item Provide uncertainty metrics and timestamps with each estimate.
-% \end{enumerate}
-% \textbf{Standards and Regulations}
-% \begin{enumerate}
-%     \item Follow applicable estimation and data handling standards.
-% \end{enumerate}
 
 %%% End Navigation
