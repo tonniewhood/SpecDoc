@@ -25,7 +25,7 @@
 % \textbf{Structure}
     \item The Sensor Selector shall be verified by configuring sensors with distinct priority levels and observing that the selected sensors match the expected order of precedence and fallback defined in configuration.
     \item The Sensor Selector shall be verified by providing new data at controlled intervals and confirming that selection processing only occurs immediately after new sensor data are received.
-    \item The Sensor Selector shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.1.7 and \S3.1.5.
+    \item The Sensor Selector shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{Estimator}
@@ -52,7 +52,7 @@
 % \textbf{Structure}
     \item The Estimator shall be verified by providing various combinations of sensor measurements (i.e. IMU only, IMU + GPS, IMU + barometer) and confirming that all are processed through a common data pathway to produce consistent state outputs.
     \item The Estimator shall be verified by collecting state outputs and confirming through comparison against reference transformations that all data conform to a single body frame and a single inertial frame definition.
-    \item The Estimator shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.1.7 and \S3.1.5.
+    \item The Estimator shall be verified using static analysis tools such as linters and formatters to ensure compliance with the coding standards outlined under \S3.1.5.
 \end{enumerate}
 
 %%% End Navigation Verification

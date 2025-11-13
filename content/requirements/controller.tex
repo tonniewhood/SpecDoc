@@ -47,7 +47,7 @@
 % \textbf{Energy}
     \item The preprocessor shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item The preprocessor shall be function agnostic to the UAV environment.
+    \item The preprocessor shall function agnostic to the UAV environment.
     \item The preprocessor shall apply saturation and rate limits to setpoints determined by the controller configuration and UAV state.
 % \textbf{Safety}
     \item The preprocessor shall log invalid or out-of-bounds inputs for diagnostics.
@@ -58,7 +58,7 @@
     \item The preprocessor shall output the exact state it receives unless zeroing for disabled setpoints.
     \item The preprocessor shall output the exact setpoints it receives modified only by slewing unless zeroing for disabled setpoints.
 % \textbf{Standards and Regulations}
-    \item The preprocessor shall adhere to all coding standards defined under \S3.1.1.7 and \S3.1.5.
+    \item The preprocessor shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{PVA Controller}
@@ -85,7 +85,7 @@
 % \textbf{Structure}
     \item The PVA controller shall expose setpoints for position, velocity, and acceleration in three dimensions.
 % \textbf{Standards and Regulations}
-    \item The PVA controller shall adhere to all coding standards defined under \S3.1.1.7 and \S3.1.5.
+    \item The PVA controller shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{ATL Controller}
@@ -114,7 +114,7 @@
     \item The ATL controller shall expose setpoints for attitude and angular velocity in three dimensions.
     \item The ATL controller shall expose throttle setpoints independent of attitude and angular velocity.
 % \textbf{Standards and Regulations}
-    \item The ATL controller shall adhere to all coding standards defined under \S3.1.1.7 and \S3.1.5.
+    \item The ATL controller shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 \subsubsection{Control Distributor}
@@ -131,7 +131,7 @@
 % \textbf{Energy}
     \item The control distributor shall not consume more than 5\% of the selected processing unit's bandwidth.
 % \textbf{Environments}
-    \item The control distributor shall be functional agnostic to the UAV environment.
+    \item The control distributor shall function agnostic to the UAV environment.
     \item The control distributor shall detect and handle hardware failures gracefully.
     \item The control distributor shall support testing the configured output map while not in flight.
 % \textbf{Safety}
@@ -142,7 +142,7 @@
 % \textbf{Structure}
     \item The control distributor shall map logical control channels to physical hardware outputs based on configuration.
 % \textbf{Standards and Regulations}
-    \item The control distributor shall adhere to all coding standards defined under \S3.1.1.7 and \S3.1.5.
+    \item The control distributor shall adhere to all coding standards defined under \S3.1.5.
 \end{enumerate}
 
 %%% End Controller
