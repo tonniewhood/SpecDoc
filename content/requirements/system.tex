@@ -46,16 +46,24 @@
 
 \subsubsection{Hardware Requirements}
 \subitem{
-    The FCM hardware used to connect sub-part and external peripherals.
-}
+    The FCM hardware used to connect sub-part and external peripherals. \\
+    \quad \\
+} 
+\textbf{Physical Structure}
 \begin{enumerate}
     \item The FCM shall have a cross-sectional area less than or equal to $412.5$ cm$^2$.
     \item The FCM shall have a depth less than or equal to $7.5$ cm.
     \item The FCM shall have a mass less than or equal to $500$ grams.
+\end{enumerate}
+\textbf{Environmental}
+\begin{enumerate}[resume]
     \item The FCM shall operate at altitudes up to $100$ m AGL.
-    \item The FCM shall operate in ambient temperatures from $-20^\circ$C to $70^\circ$C.
-    \item The FCM shall operate in ambient humidity between $10\%$ and $90\%$.
+    \item The FCM shall operate in ambient temperatures from $0^\circ$C to $40^\circ$C.
+    \item The FCM shall operate in ambient non-condensing humidity between $0\%$ and $100\%$.
     \item The FCM shall tolerate vibrations up to $30$ m/s$^2$ as measured by the onboard IMU.
+\end{enumerate}
+\textbf{Safety, Standards, and Regulations}
+\begin{enumerate}[resume]
     \item The FCM PCB shall adhere to IPC-2221 pcb design standard.
     \item The FCM shall have an IP rating of IP43 as defined by IEC 60529.
     \item The FCM shall comply with the RoHS directive for hazardous materials.
@@ -85,9 +93,7 @@
     \item All C code running on the FCM shall adhere to the BARR-C:2018 Embedded C Coding Standard and CERT C Secure Coding Standard.
     \item All C++ code running on the FCM shall adhere to the C++ Core Guidelines and CERT C++ Secure Coding Standard.
     \item All Assembly code running on the FCM shall adhere to the coding standards defined by the hardware platform manufacturer.
-    \item All other programming languages used on the FCM shall define and adhere to a coding standard appropriate for the language and application.
     \item All code performing any real-time operations shall adhere to the POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable.
-    \item All deviations from any defined standard should be documented and justified.
 \end{enumerate}
 
 \subsubsection{Power Management}
