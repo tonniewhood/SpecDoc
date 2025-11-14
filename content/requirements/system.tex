@@ -23,7 +23,7 @@
 \begin{enumerate}
     \item The FCM shall provide an on-board IMU.
     \item The FCM shall provide an on-board RC receiver for teleoperation.
-    \item The FCM shall provide an on-board micro-SD card reader for data storage.
+    \item The FCM shall provide an on-board micro-SD card reader for data storage according to the specifications outlined in document \S2.b.vii, SD Physical Layer Simplified Specification v6.00.
     \item The FCM shall provide on-board power monitoring.
     \item The FCM shall provide on-board power regulation.
 \end{enumerate}
@@ -33,15 +33,15 @@
     Hardware interfaces provide connectivity between onboard modules and external devices.
 }
 \begin{enumerate}
-    \item The FCM shall expose pins for the I$^2$C interface.
+    \item The FCM shall expose pins for the I$^2$C interface in accordance with the specifications outlined in document \S2.b.vi, UM10204 - I$^2$C-bus Specification and User Manual.
     \item The FCM shall expose pins for the SPI interface.
     \item The FCM shall expose pins for the UART interface.
-    \item The FCM shall expose pins for the 2 conductor CAN bus interface.
-    \item The FCM shall expose a micro SD slot to connect the SPI interface.
-    \item The FCM shall expose a USB A port connecting to the USB 2.0 interface.
+    \item The FCM shall expose pins for the 2 conductor CAN bus interface in accordance with the specifications outlined in document \S2.b.v, ISO 11898-1:2015 - CAN Data Link Layer and Physical Signaling.
+    \item The FCM shall expose a micro SD slot to connect the SPI interface in accordance with the specifications outlined in document \S2.b.vii, SD Physical Layer Simplified Specification v6.00.
+    \item The FCM shall expose a USB A port connecting to the USB 2.0 interface in accordance with the specifications outlined in document \S2.b.iv, USB 2.0 Specification.
     \item The FCM shall expose pins for 6 PWM channels.
     \item The ports for each of the specified interfaces shall be soldered onto the FCM.
-    \item The ports for each of the specified interfaces shall adhere to FAA L-823 3.3.3 Mechanical Connection specification.
+    \item The ports for each of the specified interfaces shall adhere to the Mechanical Connection specification found in document \S2.a.iii, FAA L-823 - Plug and Receptacle, Cable Connectors, section \S3.3.3.
 \end{enumerate}
 
 \subsubsection{Hardware Requirements}
@@ -61,16 +61,13 @@
     \item The FCM shall operate in ambient temperatures from $0^\circ$C to $40^\circ$C.
     \item The FCM shall operate in ambient non-condensing humidity between $0\%$ and $100\%$.
     \item The FCM shall tolerate vibrations up to $30$ m/s$^2$ as measured by the onboard IMU.
-\end{enumerate}
-\textbf{Safety, Standards, and Regulations}
-\begin{enumerate}[resume]
-    \item The FCM PCB shall adhere to IPC-2221 pcb design standard.
-    \item The FCM shall have an IP rating of IP43 as defined by IEC 60529.
-    \item The FCM shall comply with the RoHS directive for hazardous materials.
-    \item All FCM components and communications shall comply with the standards outlined in FCC 47 CFR Part 15 - Radio Frequency Devices.
-    \item All FCM components and communications shall comply with the standards outlined in FCC 47 CFR Part 97 - Amateur Radio Service.
-    \item The FCM shall provide a way to identify the UAV as outlined in FAA 14 CFR Part 89 - Remote Identification of Unmanned Aircraft.
-    \item The FCM shall ensure that UAV operations comply with FAA 14 CFR Part 107 - Small Unmanned Aircraft Systems.
+    \item The FCM PCB shall adhere to IPC-2221 pcb design standard found in document \S2.b.xv.
+    \item The FCM shall have an IP rating of IP43 as defined in document \S2.b.xvi, IEC 60529.
+    \item The FCM shall comply with the RoHS directive for hazardous materials outlined in document \S2.a.vi.
+    \item All FCM components and communications shall comply with the standards outlined in document \S2.a.iv, FCC 47 CFR Part 15 - Radio Frequency Devices.
+    \item All FCM components and communications shall comply with the standards outlined in document \S2.a.v, FCC 47 CFR Part 97 - Amateur Radio Service.
+    \item The FCM shall provide a way to identify the UAV as outlined in document \S2.a.ii, FAA 14 CFR Part 89 - Remote Identification of Unmanned Aircraft.
+    \item The FCM shall ensure that UAV operations comply with the standards outlined in document \S2.a.i, FAA 14 CFR Part 107 - Small Unmanned Aircraft Systems.
 \end{enumerate}
 
 \subsubsection{Software Requirements}
@@ -79,21 +76,21 @@
 }
 \begin{enumerate}
     \item The FCM shall provide a method of interfacing with GPIO pins as defined by the hardware platform.
-    \item The FCM shall provide a method of interfacing with I$^2$C devices as defined in UM10204 from NXP Semiconductors.
+    \item The FCM shall provide a method of interfacing with I$^2$C devices in accordance with the specifications outlined in document \S2.b.vi, UM10204 - I$^2$C-bus Specification and User Manual.
     \item The FCM shall provide a method of interfacing with SPI devices as defined by the hardware platform.
     \item The FCM shall provide a method of interfacing with UART devices as defined by the hardware platform.
-    \item The FCM shall provide a method of interfacing with USB 2.0 devices as defined in the USB 2.0 Specification from USB-IF.
-    \item The FCM shall provide a method of interfacing with CAN devices as defined in ISO 11898-1:2015 from ISO.
-    \item The FCM shall provide a method of interfacing with micro SD cards as defined in the SD Physical Layer Simplified Specification v6.00 from the SD Association.
+    \item The FCM shall provide a method of interfacing with USB 2.0 devices in accordance with the specifications outlined in document \S2.b.iv, USB 2.0 Specification.
+    \item The FCM shall provide a method of interfacing with CAN devices in accordance with the specifications outlined in document \S2.b.v, ISO 11898-1:2015 - CAN Data Link Layer and Physical Signaling.
+    \item The FCM shall provide a method of interfacing with micro SD cards in accordance with the specifications outlined in document \S2.b.vii, SD Physical Layer Simplified Specification v6.00.
     \item The FCM shall provide a method of interfacing with ADC channels as defined by the hardware platform.
     \item The FCM shall provide a method of interfacing with any on-chip hardware timers as defined by the hardware platform.
     \item The FCM shall provide a method of configuring and handling interrupts as defined by the hardware platform.
     \item The FCM shall provide a method of interfacing with any device using the provided hardware interfaces, given an appropriate driver is provided.
     \item The FCM shall provide an ICD outlining the APIs utilized for all functionality described in the preceding requirements.
-    \item All C code running on the FCM shall adhere to the BARR-C:2018 Embedded C Coding Standard and CERT C Secure Coding Standard.
-    \item All C++ code running on the FCM shall adhere to the C++ Core Guidelines and CERT C++ Secure Coding Standard.
+    \item All C code running on the FCM shall adhere to the BARR-C:2018 Embedded C Coding Standard and CERT C Secure Coding Standard, documents \S2.b.viii and \S2.b.x respectively.
+    \item All C++ code running on the FCM shall adhere to the C++ Core Guidelines and CERT C++ Secure Coding Standard, documents \S2.b.ix and \S2.b.xi respectively.
     \item All Assembly code running on the FCM shall adhere to the coding standards defined by the hardware platform manufacturer.
-    \item All code performing any real-time operations shall adhere to the POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable.
+    \item All code performing any real-time operations shall adhere to the POSIX 1003.1 standard, RTCA DO-178C, and ARINC 653 where applicable, documents \S2.b.xii, \S2.b.xiii, and \S2.b.xiv respectively.
 \end{enumerate}
 
 \subsubsection{Power Management}
